@@ -1,0 +1,38 @@
+PODS:
+  - bdk_flutter (0.31.3):
+    - Flutter
+  - boltz (0.1.6)
+  - Flutter (1.0.0)
+  - integration_test (0.0.1):
+    - Flutter
+  - lwk (0.1.5)
+
+DEPENDENCIES:
+  - bdk_flutter (from `.symlinks/plugins/bdk_flutter/ios`)
+  - boltz (from `.symlinks/plugins/boltz/ios`)
+  - Flutter (from `Flutter`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
+  - lwk (from `.symlinks/plugins/lwk/ios`)
+
+EXTERNAL SOURCES:
+  bdk_flutter:
+    :path: ".symlinks/plugins/bdk_flutter/ios"
+  boltz:
+    :path: ".symlinks/plugins/boltz/ios"
+  Flutter:
+    :path: Flutter
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
+  lwk:
+    :path: ".symlinks/plugins/lwk/ios"
+
+SPEC CHECKSUMS:
+  bdk_flutter: cef9180019b4c6b67a3e3dfb74611683fe140107
+  boltz: 6388ec2412f3753b63a9e65c97f87ea26f43bddc
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  integration_test: 4a889634ef21a45d28d50d622cf412dc6d9f586e
+  lwk: 22e06bc5664247d6b2dac91cfe209b63b70dd580
+
+PODFILE CHECKSUM: 4305caec6b40dde0ae97be1573c53de1882a07e5
+
+COCOAPODS: 1.16.2
