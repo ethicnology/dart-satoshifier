@@ -10,11 +10,25 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  bdk_flutter:
+    git:
+      url: https://github.com/LtbLightning/bdk-flutter
+      ref: main
+  boltz: ^0.2.0
+  lwk: ^0.2.0
+  dart_bip21: ^1.0.0
+  freezed_annotation: ^3.0.0
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  integration_test:
+    sdk: flutter
   flutter_lints: ^5.0.0
+  build_runner: ^2.4.14
+  freezed: ^3.0.6
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
