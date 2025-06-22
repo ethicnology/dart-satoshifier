@@ -1,0 +1,30 @@
+import 'package:boltz/boltz.dart' as boltz;
+import 'package:satoshifier/satoshifier.dart';
+
+class Bolt11Parser {
+  static Future<Satoshifier> parse(String data) async {
+    try {
+      final invoice = await boltz.DecodedInvoice.fromString(s: data);
+      final sats = invoice.msats.toInt() ~/ 1000;
+
+      return Satoshifier.bolt11(
+        invoice: data,
+        sats: sats,
+        paymentHash: invoice.preimageHash,
+        description: invoice.description,
+        expiresAt: invoice.expiresAt.toInt(),
+        isTestnet: invoice.network != 'bitcoin',
+      );
+    } catch (_) {
+      rethrow;
+    }
+  }
+
+  static Future<Satoshifier?> tryParse(String data) async {
+    try {
+      return await parse(data);
+    } catch (_) {
+      return null;
+    }
+  }
+}
