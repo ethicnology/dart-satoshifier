@@ -41,6 +41,7 @@ sealed class Satoshifier with _$Satoshifier {
   }) = Bolt11;
 
   const factory Satoshifier.bip21({
+    required String scheme,
     required String uri,
     required String address,
     @Default(0) int sats,

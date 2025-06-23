@@ -16,7 +16,7 @@ dependencies:
       ref: main
   boltz: ^0.2.0
   lwk: ^0.2.0
-  dart_bip21: ^1.0.0
+  bip21_uri: ^2.0.0
   freezed_annotation: ^3.0.0
   
 
