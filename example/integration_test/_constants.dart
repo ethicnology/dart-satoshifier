@@ -55,3 +55,11 @@ const externalDescriptor =
     'wpkh([182551a3/84h/0h/0h]xpub6DM9LRnPTBFRREps8bsNhfGKZ9Phwz6QSWG4iwdxLF2jfMKCncXD7pMyZhjWXmD8QQGPa1ENYZuvV8shstsZmfpZKAXinpoweXCuNBMc5uz/0/*)';
 const combinedDescriptor =
     'wpkh([182551a3/84h/0h/0h]xpub6DM9LRnPTBFRREps8bsNhfGKZ9Phwz6QSWG4iwdxLF2jfMKCncXD7pMyZhjWXmD8QQGPa1ENYZuvV8shstsZmfpZKAXinpoweXCuNBMc5uz/<0;1>/*)#4f2pnnww';
+
+// Extended Public Keys
+const xpub =
+    'xpub6ExMPLvz3jqYHu2XzgjEFVgCd5K3HP8kMworksijDYCHAQKH1GK49iYuha6gPvtKo3i4U3rDAzzQL6Er5AgVrKnYyAxytRHhB82UNzvTEtK';
+const ypub =
+    'ypub6Zvt7zyscLqKLxxBm43Wm4wf3XHG9FKRPYgwK5Jcymrup8qhg39wDNvRnDFLwNEXKVcpLJK6KTLQ2LdR8iwnCvSGHTKQs7ooL79FyDekNaa';
+const zpub =
+    'zpub6t1F1TKqVvFXuWEb8A3z4ifT6FaPzpstcV6D4tyZkCXMtg7NaETqFe9agijNW8bpy2qQYCRmDm9hUmWuyAc6FqHsofHY5TiqiTsJBr2d9uM';
