@@ -11,6 +11,7 @@ class Registry {
     PsbtParser.parse,
     Bolt11Parser.parse,
     LiquidAddressParser.parse,
+    DescriptorParser.parse,
   ];
 
   static Future<Satoshifier> parse(String data) async {

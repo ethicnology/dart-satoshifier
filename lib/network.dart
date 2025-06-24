@@ -7,6 +7,19 @@ enum Network {
   signet,
   regtest;
 
+  bdk.Network get toBdk {
+    switch (this) {
+      case Network.mainnet:
+        return bdk.Network.bitcoin;
+      case Network.testnet:
+        return bdk.Network.testnet;
+      case Network.signet:
+        return bdk.Network.signet;
+      case Network.regtest:
+        return bdk.Network.regtest;
+    }
+  }
+
   static Network fromBdkNetwork(bdk.Network bdkNetwork) {
     switch (bdkNetwork) {
       case bdk.Network.bitcoin:

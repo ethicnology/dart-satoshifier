@@ -5,6 +5,7 @@ export 'network.dart' show Network;
 export 'parsers/bitcoin_address_parser.dart' show BitcoinAddressParser;
 export 'parsers/bip21_parser.dart' show Bip21Parser;
 export 'parsers/bolt11_parser.dart' show Bolt11Parser;
+export 'parsers/descriptor_parser.dart' show DescriptorParser;
 export 'parsers/liquid_address_parser.dart' show LiquidAddressParser;
 export 'parsers/psbt_parser.dart' show PsbtParser;
 export 'setup.dart' show LibSatoshifier;
@@ -51,6 +52,11 @@ sealed class Satoshifier with _$Satoshifier {
     @Default('') String pj,
     @Default('') String pjos,
   }) = Bip21;
+
+  const factory Satoshifier.descriptor({
+    required String descriptor,
+    required Network network,
+  }) = Descriptor;
 
   const factory Satoshifier.psbt({required String psbt}) = Psbt;
 
