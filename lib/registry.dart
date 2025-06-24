@@ -5,13 +5,13 @@ typedef ParserFunction = Future<Satoshifier> Function(String data);
 class Registry {
   Registry._();
 
-  static final List<ParserFunction> _parsers = [
-    BitcoinAddressParser.parse,
-    Bip21Parser.parse,
-    PsbtParser.parse,
-    Bolt11Parser.parse,
-    LiquidAddressParser.parse,
-    DescriptorParser.parse,
+  static final List<(Type, ParserFunction)> _parsers = [
+    (BitcoinAddressParser, BitcoinAddressParser.parse),
+    (Bip21Parser, Bip21Parser.parse),
+    (PsbtParser, PsbtParser.parse),
+    (Bolt11Parser, Bolt11Parser.parse),
+    (LiquidAddressParser, LiquidAddressParser.parse),
+    (DescriptorParser, DescriptorParser.parse),
   ];
 
   static Future<Satoshifier> parse(String data) async {
@@ -20,10 +20,11 @@ class Registry {
     await LibSatoshifier.init();
 
     final trimmed = data.trim();
-    for (final parser in _parsers) {
+    for (final (type, parser) in _parsers) {
       try {
         return await parser(trimmed);
-      } catch (_) {
+      } catch (e) {
+        print('${type.toString()}: $e');
         continue;
       }
     }
