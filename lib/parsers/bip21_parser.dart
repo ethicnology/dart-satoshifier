@@ -16,7 +16,7 @@ class Bip21Parser {
       case 'liquidtestnet':
         await LiquidAddressParser.parse(uri.address);
       default:
-        print('Unhandled scheme: ${uri.scheme} ${uri.address} not verified');
+        throw 'Unhandled scheme: ${uri.scheme} ${uri.address} not verified';
     }
 
     final amount = uri.amount;
