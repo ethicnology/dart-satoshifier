@@ -8,7 +8,7 @@ export 'parsers/bolt11_parser.dart' show Bolt11Parser;
 export 'parsers/descriptor_parser.dart' show DescriptorParser;
 export 'parsers/liquid_address_parser.dart' show LiquidAddressParser;
 export 'parsers/psbt_parser.dart' show PsbtParser;
-export 'scanner_widget.dart' show SatoshifierScanner;
+export 'scanner_widget.dart' show SatoshifierScannerWidget;
 export 'setup.dart' show LibSatoshifier;
 
 // imports
