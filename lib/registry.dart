@@ -20,11 +20,11 @@ class Registry {
     await LibSatoshifier.init();
 
     final trimmed = data.trim();
-    for (final (type, parser) in _parsers) {
+    for (final (_, parser) in _parsers) {
       try {
         return await parser(trimmed);
       } catch (e) {
-        print('${type.toString()}: $e');
+        // print('${type.toString()}: $e');
         continue;
       }
     }
