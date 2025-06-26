@@ -59,4 +59,40 @@ class Descriptor {
       account: 0,
     );
   }
+
+  String get combined {
+    final coinType = network.isBitcoin ? 0 : 1667;
+    final derivationPurpose =
+        derivation == Derivation.bip44
+            ? '44h'
+            : derivation == Derivation.bip49
+            ? '49h'
+            : '84h';
+    final oneMoreIfNeeded = operand == ScriptOperand.shwpkh ? ')' : '';
+    return '${operand.value}([$fingerprint/$derivationPurpose/${coinType}h/${account}h]$pubkey/<0;1>/*)$oneMoreIfNeeded';
+  }
+
+  String get internal {
+    final coinType = network.isBitcoin ? 0 : 1667;
+    final derivationPurpose =
+        derivation == Derivation.bip44
+            ? '44h'
+            : derivation == Derivation.bip49
+            ? '49h'
+            : '84h';
+    final oneMoreIfNeeded = operand == ScriptOperand.shwpkh ? ')' : '';
+    return '${operand.value}([$fingerprint/$derivationPurpose/${coinType}h/${account}h]$pubkey/1/*)$oneMoreIfNeeded';
+  }
+
+  String get external {
+    final coinType = network.isBitcoin ? 0 : 1667;
+    final derivationPurpose =
+        derivation == Derivation.bip44
+            ? '44h'
+            : derivation == Derivation.bip49
+            ? '49h'
+            : '84h';
+    final oneMoreIfNeeded = operand == ScriptOperand.shwpkh ? ')' : '';
+    return '${operand.value}([$fingerprint/$derivationPurpose/${coinType}h/${account}h]$pubkey/0/*)$oneMoreIfNeeded';
+  }
 }
