@@ -4,9 +4,7 @@ import 'package:satoshifier/satoshifier.dart';
 void main() {
   group('Watch Only', () {
     test('change only descriptor', () async {
-      final watchOnly = await WatchOnlyParser.parse(
-        TestValue.descriptorChangeOnly,
-      );
+      final watchOnly = await Satoshifier.parse(TestValue.descriptorChangeOnly);
       expect(watchOnly, isA<WatchOnly>());
       final descriptor = (watchOnly as WatchOnly).descriptor;
       expect(descriptor.operand, ScriptOperand.shwpkh);
@@ -19,9 +17,7 @@ void main() {
     });
 
     test('descriptor: bip44', () async {
-      final watchOnly = await WatchOnlyParser.parse(
-        TestValue.descriptorP2pkhBip44,
-      );
+      final watchOnly = await Satoshifier.parse(TestValue.descriptorP2pkhBip44);
       expect((watchOnly as WatchOnly), isA<WatchOnly>());
       expect(watchOnly.extendedPubkey?.pubBase58, TestValue.xpub);
       expect(watchOnly.pubkeyFingerprint, TestValue.xpubFingerprint);
@@ -29,9 +25,7 @@ void main() {
     });
 
     test('descriptor: bip49', () async {
-      final watchOnly = await WatchOnlyParser.parse(
-        TestValue.descriptorP2shBip49,
-      );
+      final watchOnly = await Satoshifier.parse(TestValue.descriptorP2shBip49);
 
       expect((watchOnly as WatchOnly), isA<WatchOnly>());
       final extendedPubkey = watchOnly.extendedPubkey;
@@ -41,7 +35,7 @@ void main() {
     });
 
     test('descriptor: bip84', () async {
-      final watchOnly = await WatchOnlyParser.parse(
+      final watchOnly = await Satoshifier.parse(
         TestValue.descriptorP2wpkhBip84,
       );
 
