@@ -14,9 +14,9 @@ void main() {
         expect(result, isA<BitcoinAddress>());
         expect((result as BitcoinAddress).address, address);
         if (mainnetAddresses.contains(address)) {
-          expect((result).network, Network.mainnet);
+          expect((result).network, Network.bitcoinMainnet);
         } else if (testnetAddresses.contains(address)) {
-          expect((result).network, Network.testnet);
+          expect((result).network, Network.bitcoinTestnet);
         }
       }
     });
