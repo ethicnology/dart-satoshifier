@@ -1,6 +1,5 @@
 import 'package:bip21_uri/bip21_uri.dart';
 import 'package:satoshifier/satoshifier.dart';
-import 'package:satoshifier/utils.dart';
 
 class Bip21Parser {
   static Future<Satoshifier> parse(String data) async {

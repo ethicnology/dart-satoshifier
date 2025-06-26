@@ -2,7 +2,6 @@ import 'dart:typed_data';
 
 import 'package:bs58/bs58.dart';
 import 'package:convert/convert.dart';
-import 'package:satoshifier/bip32_utils.dart';
 import 'package:satoshifier/satoshifier.dart';
 
 class ExtendedPubkey {

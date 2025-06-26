@@ -1,5 +1,4 @@
 import 'package:satoshifier/satoshifier.dart';
-import 'package:satoshifier/utils.dart';
 
 class Descriptor {
   final ScriptOperand operand;

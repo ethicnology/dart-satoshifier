@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:satoshifier/utils.dart';
+import 'package:satoshifier/utils/utils.dart';
 
 void main() {
   group('btcToSats', () {

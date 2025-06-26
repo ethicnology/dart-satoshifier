@@ -16,6 +16,8 @@ export 'parsers/bolt11_parser.dart' show Bolt11Parser;
 export 'parsers/liquid_address_parser.dart' show LiquidAddressParser;
 export 'parsers/psbt_parser.dart' show PsbtParser;
 export 'parsers/watch_only_parser.dart' show WatchOnlyParser;
+export 'utils/utils.dart' show Utils;
+export 'utils/bip32_utils.dart' show Bip32Utils;
 
 // imports
 import 'package:freezed_annotation/freezed_annotation.dart';
