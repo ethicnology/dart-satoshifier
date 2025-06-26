@@ -13,7 +13,7 @@ dependencies:
   bdk_flutter:
     git:
       url: https://github.com/LtbLightning/bdk-flutter
-      ref: main
+      ref: ac8d102240a4242e319e71492d3698828177e97b
   boltz: ^0.2.0
   lwk: ^0.2.0
   bip21_uri: ^2.0.0

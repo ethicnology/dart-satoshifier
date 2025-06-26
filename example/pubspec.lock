@@ -53,7 +53,7 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: main
+      ref: ac8d102240a4242e319e71492d3698828177e97b
       resolved-ref: ac8d102240a4242e319e71492d3698828177e97b
       url: "https://github.com/LtbLightning/bdk-flutter"
     source: git
