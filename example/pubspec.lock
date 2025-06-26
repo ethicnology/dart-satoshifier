@@ -69,10 +69,11 @@ packages:
   bip32:
     dependency: transitive
     description:
-      name: bip32
-      sha256: "54787cd7a111e9d37394aabbf53d1fc5e2e0e0af2cd01c459147a97c0e3f8a97"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: main
+      resolved-ref: "451966c8948bdefd2406871ad6e322cb4f139189"
+      url: "https://github.com/ethicnology/dart-bip32"
+    source: git
     version: "2.0.0"
   boltz:
     dependency: transitive
