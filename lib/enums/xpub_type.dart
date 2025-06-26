@@ -1,3 +1,5 @@
+import 'package:satoshifier/satoshifier.dart';
+
 /// Enum to represent different extended public key formats
 enum XpubType {
   xpub([0x04, 0x88, 0xB2, 0x1E]), // Mainnet Legacy P2PKH
@@ -19,5 +21,21 @@ enum XpubType {
     if (pubkey.startsWith('vpub')) return XpubType.vpub;
 
     throw 'Invalid xpub type: $pubkey';
+  }
+
+  static XpubType fromDerivation(Derivation derivation, Network network) {
+    if (network == Network.bitcoinMainnet) {
+      if (derivation == Derivation.bip44) return XpubType.xpub;
+      if (derivation == Derivation.bip49) return XpubType.ypub;
+      if (derivation == Derivation.bip84) return XpubType.zpub;
+    }
+
+    if (network == Network.bitcoinTestnet) {
+      if (derivation == Derivation.bip44) return XpubType.tpub;
+      if (derivation == Derivation.bip49) return XpubType.upub;
+      if (derivation == Derivation.bip84) return XpubType.vpub;
+    }
+
+    throw 'Invalid derivation: $derivation for network: $network';
   }
 }

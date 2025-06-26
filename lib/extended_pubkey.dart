@@ -12,10 +12,10 @@ class ExtendedPubkey {
 
   ExtendedPubkey({
     required this.pubkey,
-    required this.type,
+    type,
     required this.derivation,
     required this.network,
-  });
+  }) : type = XpubType.fromDerivation(derivation, network);
 
   // Returns the base58 encoded xpub / ypub / zpub depending on the type
   String get pubBase58 => base58.encode(Uint8List.fromList(pubkey));
@@ -32,15 +32,6 @@ class ExtendedPubkey {
       derivation: derivation,
       pubkey: pubkey,
       network: network,
-    );
-  }
-
-  static ExtendedPubkey fromDescriptor(Descriptor descriptor) {
-    return ExtendedPubkey(
-      type: XpubType.fromString(descriptor.pubkey),
-      derivation: descriptor.derivation,
-      pubkey: base58.decode(descriptor.pubkey),
-      network: descriptor.network,
     );
   }
 }
