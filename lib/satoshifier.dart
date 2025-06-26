@@ -19,7 +19,6 @@ export 'parsers/watch_only_parser.dart' show WatchOnlyParser;
 export 'utils/utils.dart' show Utils;
 export 'utils/bip32_utils.dart' show Bip32Utils;
 export '_test_value.dart' show TestValue;
-export 'satoshifier.dart';
 
 // imports
 import 'package:freezed_annotation/freezed_annotation.dart';
