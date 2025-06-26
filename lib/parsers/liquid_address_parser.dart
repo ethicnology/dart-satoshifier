@@ -1,5 +1,5 @@
 import 'package:lwk/lwk.dart' as lwk;
-import 'package:satoshifier/network.dart';
+import 'package:satoshifier/enums/network.dart';
 import 'package:satoshifier/satoshifier.dart' show Satoshifier;
 
 class LiquidAddressParser {

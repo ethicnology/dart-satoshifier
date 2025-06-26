@@ -1,4 +1,4 @@
-import 'package:satoshifier/network.dart';
+import 'package:satoshifier/enums/network.dart';
 
 enum CoinType {
   bitcoin(0, 0x80000000),

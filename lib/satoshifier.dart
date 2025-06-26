@@ -2,12 +2,12 @@ library;
 
 // exports
 export 'setup.dart' show LibSatoshifier;
-export 'network.dart' show Network;
-export 'xpub_type.dart' show XpubType;
-export 'coin_type.dart' show CoinType;
-export 'derivation.dart' show Derivation;
+export 'enums/network.dart' show Network;
+export 'enums/xpub_type.dart' show XpubType;
+export 'enums/coin_type.dart' show CoinType;
+export 'enums/derivation.dart' show Derivation;
 export 'descriptor.dart' show Descriptor;
-export 'script_operand.dart' show ScriptOperand;
+export 'enums/script_operand.dart' show ScriptOperand;
 export 'extended_pubkey.dart' show ExtendedPubkey;
 export 'watch_only_extension.dart' show WatchOnlyExtension;
 export 'parsers/bitcoin_address_parser.dart' show BitcoinAddressParser;
@@ -22,7 +22,7 @@ export 'utils/bip32_utils.dart' show Bip32Utils;
 // imports
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:satoshifier/descriptor.dart';
-import 'package:satoshifier/network.dart';
+import 'package:satoshifier/enums/network.dart';
 import 'package:satoshifier/registry.dart';
 
 part 'satoshifier.freezed.dart';

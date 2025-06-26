@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:bip32/bip32.dart' as bip32;
 import 'package:bs58/bs58.dart';
-import 'package:satoshifier/xpub_type.dart';
+import 'package:satoshifier/enums/xpub_type.dart';
 
 class Bip32Utils {
   static Uint8List fingerprint(List<int> pubkey, XpubType type) {
