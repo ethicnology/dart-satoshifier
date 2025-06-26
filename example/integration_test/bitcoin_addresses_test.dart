@@ -1,11 +1,17 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:satoshifier/satoshifier.dart';
 
-import '_constants.dart';
-
 void main() {
-  const mainnetAddresses = [mainnetP2PKH, mainnetP2SH, mainnetBech32];
-  const testnetAddresses = [testnetP2PKH, testnetP2SH, testnetBech32];
+  final mainnetAddresses = [
+    TestValue.mainnetP2PKH,
+    TestValue.mainnetP2SH,
+    TestValue.mainnetBech32,
+  ];
+  final testnetAddresses = [
+    TestValue.testnetP2PKH,
+    TestValue.testnetP2SH,
+    TestValue.testnetBech32,
+  ];
 
   group('Bitcoin Addresses', () {
     test('parses all valid addresses', () async {

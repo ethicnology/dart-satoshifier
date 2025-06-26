@@ -18,6 +18,7 @@ export 'parsers/psbt_parser.dart' show PsbtParser;
 export 'parsers/watch_only_parser.dart' show WatchOnlyParser;
 export 'utils/utils.dart' show Utils;
 export 'utils/bip32_utils.dart' show Bip32Utils;
+export '_test_value.dart' show TestValue;
 
 // imports
 import 'package:freezed_annotation/freezed_annotation.dart';

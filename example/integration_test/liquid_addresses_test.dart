@@ -1,10 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:satoshifier/satoshifier.dart';
 
-import '_constants.dart';
-
 void main() {
-  const valids = [liquidAddressMain];
+  final valids = [TestValue.liquidAddressMain];
 
   group('Liquid Addresses', () {
     test('parses all valid addresses', () async {
