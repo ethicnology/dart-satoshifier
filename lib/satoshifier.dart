@@ -1,18 +1,25 @@
 library;
 
 // exports
+export 'setup.dart' show LibSatoshifier;
 export 'network.dart' show Network;
+export 'xpub_type.dart' show XpubType;
+export 'coin_type.dart' show CoinType;
+export 'derivation.dart' show Derivation;
+export 'descriptor.dart' show Descriptor;
+export 'script_operand.dart' show ScriptOperand;
+export 'extended_pubkey.dart' show ExtendedPubkey;
+export 'watch_only_extension.dart' show WatchOnlyExtension;
 export 'parsers/bitcoin_address_parser.dart' show BitcoinAddressParser;
 export 'parsers/bip21_parser.dart' show Bip21Parser;
 export 'parsers/bolt11_parser.dart' show Bolt11Parser;
-export 'parsers/descriptor_parser.dart' show DescriptorParser;
 export 'parsers/liquid_address_parser.dart' show LiquidAddressParser;
 export 'parsers/psbt_parser.dart' show PsbtParser;
-export 'scanner_widget.dart' show SatoshifierScannerWidget;
-export 'setup.dart' show LibSatoshifier;
+export 'parsers/watch_only_parser.dart' show WatchOnlyParser;
 
 // imports
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:satoshifier/descriptor.dart';
 import 'package:satoshifier/network.dart';
 import 'package:satoshifier/registry.dart';
 
@@ -42,6 +49,9 @@ sealed class Satoshifier with _$Satoshifier {
     required bool isTestnet,
   }) = Bolt11;
 
+  const factory Satoshifier.watchOnly({required Descriptor descriptor}) =
+      WatchOnly;
+
   const factory Satoshifier.bip21({
     required String scheme,
     required String uri,
@@ -53,11 +63,6 @@ sealed class Satoshifier with _$Satoshifier {
     @Default('') String pj,
     @Default('') String pjos,
   }) = Bip21;
-
-  const factory Satoshifier.descriptor({
-    required String descriptor,
-    required Network network,
-  }) = Descriptor;
 
   const factory Satoshifier.psbt({required String psbt}) = Psbt;
 
