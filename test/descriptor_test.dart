@@ -19,6 +19,16 @@ void main() {
       expect(descriptor.account, 1984);
     });
 
+    test('decodes a change only descriptor', () {
+      final descriptor = Descriptor.parse(descriptorChangeOnly);
+      expect(descriptor.operand, ScriptOperand.shwpkh);
+      expect(descriptor.pubkey, xpub);
+      expect(descriptor.fingerprint, walletMasterFingerprint);
+      expect(descriptor.network, Network.bitcoinMainnet);
+      expect(descriptor.derivation, Derivation.bip49);
+      expect(descriptor.account, 0);
+    });
+
     test('decodes a BIP44 / XPUB descriptor', () {
       final descriptor = Descriptor.parse(descriptorP2pkhBip44);
       expect(descriptor.operand, ScriptOperand.pkh);

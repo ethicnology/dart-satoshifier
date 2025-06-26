@@ -12,8 +12,11 @@ const zpubFingerprint = 'f6c41dd4';
 
 const walletMasterFingerprint = '86241f88';
 const descriptorP2shBip49 =
-    'sh(wpkh([$walletMasterFingerprint/49h/0h/0h]/$xpub<0;1>/*))#6nkjq52v';
+    'sh(wpkh([$walletMasterFingerprint/49h/0h/0h]/$xpub/<0;1>/*))#6nkjq52v';
 const descriptorP2pkhBip44 =
     'pkh([$walletMasterFingerprint/44h/0h/0h]$xpub/<0;1>/*)#fzh6clmf';
 const descriptorP2wpkhBip84 =
     'wpkh([$walletMasterFingerprint/84h/0h/0h]$xpub/<0;1>/*)#ht0s3dna';
+
+const descriptorChangeOnly =
+    'sh(wpkh([$walletMasterFingerprint/49h/0h/0h]/$xpub/1/*))';

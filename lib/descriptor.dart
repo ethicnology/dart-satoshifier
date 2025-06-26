@@ -20,7 +20,7 @@ class Descriptor {
   static Descriptor parse(String string) {
     final descriptor = string.trim();
     final match = RegExp(
-      r'(\w+)\(\[([a-fA-F0-9]+)/([0-9]+h)/([0-9]+h)/([0-9]+h)\]([^/]+)/.*',
+      r'(\w+)\(\[([a-fA-F0-9]+)/([0-9]+h)/([0-9]+h)/([0-9]+h)\]/?([^/<]+)',
     ).firstMatch(descriptor.trim());
 
     if (match == null) throw 'Invalid descriptor format: $descriptor';
