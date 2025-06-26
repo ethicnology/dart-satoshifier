@@ -21,4 +21,11 @@ class Utils {
       throw FormatException('Invalid sats amount');
     }
   }
+
+  static String trimLastQuoteOrH(String string) {
+    if (string.endsWith("'") || string.endsWith("h")) {
+      return string.substring(0, string.length - 1);
+    }
+    return string;
+  }
 }
