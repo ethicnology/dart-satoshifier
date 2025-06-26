@@ -3,6 +3,42 @@ import 'package:satoshifier/satoshifier.dart';
 
 void main() {
   group('Descriptor', () {
+    test('decodes a BIP44 descriptor', () {
+      final descriptor = Descriptor.parse(TestValue.descriptorP2pkhBip44);
+      expect(descriptor.operand, ScriptOperand.pkh);
+      expect(descriptor.pubkey, TestValue.xpub);
+      expect(descriptor.fingerprint, TestValue.walletMasterFingerprint);
+      expect(descriptor.network, Network.bitcoinMainnet);
+      expect(descriptor.derivation, Derivation.bip44);
+      expect(descriptor.account, 0);
+      expect(descriptor.combined, TestValue.descriptorP2pkhBip44.split('#')[0]);
+    });
+
+    test('decodes a BIP49 descriptor', () {
+      final descriptor = Descriptor.parse(TestValue.descriptorP2shBip49);
+      expect(descriptor.operand, ScriptOperand.shwpkh);
+      expect(descriptor.pubkey, TestValue.xpub);
+      expect(descriptor.fingerprint, TestValue.walletMasterFingerprint);
+      expect(descriptor.network, Network.bitcoinMainnet);
+      expect(descriptor.derivation, Derivation.bip49);
+      expect(descriptor.account, 0);
+      expect(descriptor.combined, TestValue.descriptorP2shBip49.split('#')[0]);
+    });
+
+    test('decodes a BIP84 descriptor', () {
+      final descriptor = Descriptor.parse(TestValue.descriptorP2wpkhBip84);
+      expect(descriptor.operand, ScriptOperand.wpkh);
+      expect(descriptor.pubkey, TestValue.xpub);
+      expect(descriptor.fingerprint, TestValue.walletMasterFingerprint);
+      expect(descriptor.network, Network.bitcoinMainnet);
+      expect(descriptor.derivation, Derivation.bip84);
+      expect(descriptor.account, 0);
+      expect(
+        descriptor.combined,
+        TestValue.descriptorP2wpkhBip84.split('#')[0], // remove checksum
+      );
+    });
+
     test('decodes a testnet descriptor', () async {
       final testnetDescriptor =
           'wpkh([${TestValue.walletMasterFingerprint}/84h/1h/1984h]${TestValue.xpub}/0/*)';
@@ -24,36 +60,6 @@ void main() {
       expect(descriptor.fingerprint, TestValue.walletMasterFingerprint);
       expect(descriptor.network, Network.bitcoinMainnet);
       expect(descriptor.derivation, Derivation.bip49);
-      expect(descriptor.account, 0);
-    });
-
-    test('decodes a BIP44 / XPUB descriptor', () {
-      final descriptor = Descriptor.parse(TestValue.descriptorP2pkhBip44);
-      expect(descriptor.operand, ScriptOperand.pkh);
-      expect(descriptor.pubkey, TestValue.xpub);
-      expect(descriptor.fingerprint, TestValue.walletMasterFingerprint);
-      expect(descriptor.network, Network.bitcoinMainnet);
-      expect(descriptor.derivation, Derivation.bip44);
-      expect(descriptor.account, 0);
-    });
-
-    test('decodes a BIP49 / SH(WPKH) / YPUB descriptor', () {
-      final descriptor = Descriptor.parse(TestValue.descriptorP2shBip49);
-      expect(descriptor.operand, ScriptOperand.shwpkh);
-      expect(descriptor.pubkey, TestValue.xpub);
-      expect(descriptor.fingerprint, TestValue.walletMasterFingerprint);
-      expect(descriptor.network, Network.bitcoinMainnet);
-      expect(descriptor.derivation, Derivation.bip49);
-      expect(descriptor.account, 0);
-    });
-
-    test('decodes a BIP84 / ZPUB descriptor', () {
-      final descriptor = Descriptor.parse(TestValue.descriptorP2wpkhBip84);
-      expect(descriptor.operand, ScriptOperand.wpkh);
-      expect(descriptor.pubkey, TestValue.xpub);
-      expect(descriptor.fingerprint, TestValue.walletMasterFingerprint);
-      expect(descriptor.network, Network.bitcoinMainnet);
-      expect(descriptor.derivation, Derivation.bip84);
       expect(descriptor.account, 0);
     });
 
