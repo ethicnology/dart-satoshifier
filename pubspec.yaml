@@ -18,10 +18,7 @@ dependencies:
   lwk: ^0.2.0
   bip21_uri: ^2.0.0
   freezed_annotation: ^3.0.0
-  bip32:
-    git:
-      url: https://github.com/ethicnology/dart-bip32
-      ref: main
+  bip32_keys: ^3.0.1
   bs58: ^1.0.2
   convert: ^3.1.2
   

@@ -66,15 +66,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
-  bip32:
+  bip32_keys:
     dependency: transitive
     description:
-      path: "."
-      ref: main
-      resolved-ref: "451966c8948bdefd2406871ad6e322cb4f139189"
-      url: "https://github.com/ethicnology/dart-bip32"
-    source: git
-    version: "2.0.0"
+      name: bip32_keys
+      sha256: e8dfb4e4ad829cbc53c745c2ec72f04aa6b83689f09bc1f8823ee416cb2e5292
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.1"
   boltz:
     dependency: transitive
     description:
