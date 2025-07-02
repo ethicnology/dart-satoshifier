@@ -1,15 +1,16 @@
 import 'package:satoshifier/satoshifier.dart';
 
 enum Derivation {
-  bip44("Legacy", "P2PKH", "m/44h/0h/0h"),
-  bip49("Nested SegWit", "P2SH-P2WPKH", "m/49h/0h/0h"),
-  bip84("Native SegWit", "P2WPKH", "m/84h/0h/0h");
+  bip44("Legacy", "P2PKH", "44h", "m/44h/0h/0h"),
+  bip49("Nested SegWit", "P2SH-P2WPKH", "49h", "m/49h/0h/0h"),
+  bip84("Native SegWit", "P2WPKH", "84h", "m/84h/0h/0h");
 
   final String label;
   final String acronym;
+  final String purpose;
   final String path;
 
-  const Derivation(this.label, this.acronym, this.path);
+  const Derivation(this.label, this.acronym, this.purpose, this.path);
 
   static Derivation fromPurpose(String derivationPurpose) {
     switch (derivationPurpose) {
