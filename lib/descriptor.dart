@@ -53,7 +53,7 @@ class Descriptor {
     return Descriptor(
       operand: ScriptOperand.fromExtendedPubkey(extendedPubkey),
       fingerprint: '',
-      pubkey: extendedPubkey.pubBase58,
+      pubkey: extendedPubkey.xpub,
       network: extendedPubkey.network,
       derivation: extendedPubkey.derivation,
       account: 0,

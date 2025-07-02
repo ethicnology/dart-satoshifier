@@ -19,6 +19,7 @@ class ExtendedPubkey {
 
   // Returns the base58 encoded xpub / ypub / zpub depending on the type
   String get pubBase58 => base58.encode(Uint8List.fromList(pubkey));
+  String get xpub => Bip32Utils.convertToXpub(pubkey);
 
   String get fingerprint => hex.encode(Bip32Utils.fingerprint(pubkey, type));
 
