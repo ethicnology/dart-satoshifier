@@ -52,7 +52,7 @@ class Descriptor {
   static Descriptor fromExtendedPubkey(ExtendedPubkey extendedPubkey) {
     return Descriptor(
       operand: ScriptOperand.fromExtendedPubkey(extendedPubkey),
-      fingerprint: extendedPubkey.fingerprint,
+      fingerprint: '',
       pubkey: extendedPubkey.pubBase58,
       network: extendedPubkey.network,
       derivation: extendedPubkey.derivation,
@@ -60,39 +60,25 @@ class Descriptor {
     );
   }
 
+  String get origin {
+    if (fingerprint.isEmpty) return '';
+    return '[$fingerprint/${derivation.purpose}/${coinType.value}h/${account}h]';
+  }
+
+  bool get _isShwpkh => operand == ScriptOperand.shwpkh;
+
   String get combined {
-    final coinType = network.isBitcoin ? 0 : 1667;
-    final derivationPurpose =
-        derivation == Derivation.bip44
-            ? '44h'
-            : derivation == Derivation.bip49
-            ? '49h'
-            : '84h';
-    final oneMoreIfNeeded = operand == ScriptOperand.shwpkh ? ')' : '';
-    return '${operand.value}([$fingerprint/$derivationPurpose/${coinType}h/${account}h]$pubkey/<0;1>/*)$oneMoreIfNeeded';
+    return "${operand.value}($origin$pubkey/<0;1>/*)${_isShwpkh ? ')' : ''}";
   }
 
   String get internal {
-    final coinType = network.isBitcoin ? 0 : 1667;
-    final derivationPurpose =
-        derivation == Derivation.bip44
-            ? '44h'
-            : derivation == Derivation.bip49
-            ? '49h'
-            : '84h';
-    final oneMoreIfNeeded = operand == ScriptOperand.shwpkh ? ')' : '';
-    return '${operand.value}([$fingerprint/$derivationPurpose/${coinType}h/${account}h]$pubkey/1/*)$oneMoreIfNeeded';
+    return "${operand.value}($origin$pubkey/1/*)${_isShwpkh ? ')' : ''}";
   }
 
   String get external {
-    final coinType = network.isBitcoin ? 0 : 1667;
-    final derivationPurpose =
-        derivation == Derivation.bip44
-            ? '44h'
-            : derivation == Derivation.bip49
-            ? '49h'
-            : '84h';
-    final oneMoreIfNeeded = operand == ScriptOperand.shwpkh ? ')' : '';
-    return '${operand.value}([$fingerprint/$derivationPurpose/${coinType}h/${account}h]$pubkey/0/*)$oneMoreIfNeeded';
+    return "${operand.value}($origin$pubkey/0/*)${_isShwpkh ? ')' : ''}";
   }
+
+  CoinType get coinType =>
+      network.isBitcoin ? CoinType.bitcoin : CoinType.liquid;
 }
