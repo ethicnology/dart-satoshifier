@@ -1,15 +1,13 @@
 import 'package:convert/convert.dart';
 import 'package:satoshifier/satoshifier.dart';
 
-extension WatchOnlyExtension on WatchOnly {
+extension WatchOnlyDescriptorExtension on WatchOnlyDescriptor {
+  ExtendedPubkey get extendedPubkey => ExtendedPubkey.parse(descriptor.pubkey);
+
   String get masterFingerprint => descriptor.fingerprint;
+  String get pubkeyFingerprint => extendedPubkey.fingerprint;
 
-  ExtendedPubkey? get extendedPubkey =>
-      ExtendedPubkey.tryParse(descriptor.pubkey);
-
-  String get pubkeyFingerprint => extendedPubkey?.fingerprint ?? '';
-
-  bool get canGenerateValidPsbt {
+  bool get canGeneratePsbt {
     if (masterFingerprint.isEmpty) return false;
     if (masterFingerprint == pubkeyFingerprint) return false;
     if (masterFingerprint.length != 8) return false;

@@ -1,16 +1,10 @@
 import 'package:satoshifier/satoshifier.dart';
 
-class WatchOnlyParser {
+class WatchOnlyXpubParser {
   static Future<Satoshifier> parse(String data) async {
     try {
       final extendedPubkey = ExtendedPubkey.parse(data);
-      final descriptor = Descriptor.fromExtendedPubkey(extendedPubkey);
-      return Satoshifier.watchOnly(descriptor: descriptor);
-    } catch (_) {}
-
-    try {
-      final descriptor = Descriptor.parse(data);
-      return Satoshifier.watchOnly(descriptor: descriptor);
+      return Satoshifier.watchOnlyXpub(extendedPubkey: extendedPubkey);
     } catch (_) {}
 
     throw 'Invalid watch only data: $data';

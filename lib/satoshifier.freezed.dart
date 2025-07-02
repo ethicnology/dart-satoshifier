@@ -534,4 +534,136 @@ as String,
 
 }
 
+/// @nodoc
+
+
+class WatchOnlyXpub extends Satoshifier {
+  const WatchOnlyXpub({required this.extendedPubkey}): super._();
+  
+
+ final  ExtendedPubkey extendedPubkey;
+
+/// Create a copy of Satoshifier
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$WatchOnlyXpubCopyWith<WatchOnlyXpub> get copyWith => _$WatchOnlyXpubCopyWithImpl<WatchOnlyXpub>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is WatchOnlyXpub&&(identical(other.extendedPubkey, extendedPubkey) || other.extendedPubkey == extendedPubkey));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,extendedPubkey);
+
+@override
+String toString() {
+  return 'Satoshifier.watchOnlyXpub(extendedPubkey: $extendedPubkey)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $WatchOnlyXpubCopyWith<$Res> implements $SatoshifierCopyWith<$Res> {
+  factory $WatchOnlyXpubCopyWith(WatchOnlyXpub value, $Res Function(WatchOnlyXpub) _then) = _$WatchOnlyXpubCopyWithImpl;
+@useResult
+$Res call({
+ ExtendedPubkey extendedPubkey
+});
+
+
+
+
+}
+/// @nodoc
+class _$WatchOnlyXpubCopyWithImpl<$Res>
+    implements $WatchOnlyXpubCopyWith<$Res> {
+  _$WatchOnlyXpubCopyWithImpl(this._self, this._then);
+
+  final WatchOnlyXpub _self;
+  final $Res Function(WatchOnlyXpub) _then;
+
+/// Create a copy of Satoshifier
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? extendedPubkey = null,}) {
+  return _then(WatchOnlyXpub(
+extendedPubkey: null == extendedPubkey ? _self.extendedPubkey : extendedPubkey // ignore: cast_nullable_to_non_nullable
+as ExtendedPubkey,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class WatchOnlyDescriptor extends Satoshifier {
+  const WatchOnlyDescriptor({required this.descriptor}): super._();
+  
+
+ final  Descriptor descriptor;
+
+/// Create a copy of Satoshifier
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$WatchOnlyDescriptorCopyWith<WatchOnlyDescriptor> get copyWith => _$WatchOnlyDescriptorCopyWithImpl<WatchOnlyDescriptor>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is WatchOnlyDescriptor&&(identical(other.descriptor, descriptor) || other.descriptor == descriptor));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,descriptor);
+
+@override
+String toString() {
+  return 'Satoshifier.watchOnlyDescriptor(descriptor: $descriptor)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $WatchOnlyDescriptorCopyWith<$Res> implements $SatoshifierCopyWith<$Res> {
+  factory $WatchOnlyDescriptorCopyWith(WatchOnlyDescriptor value, $Res Function(WatchOnlyDescriptor) _then) = _$WatchOnlyDescriptorCopyWithImpl;
+@useResult
+$Res call({
+ Descriptor descriptor
+});
+
+
+
+
+}
+/// @nodoc
+class _$WatchOnlyDescriptorCopyWithImpl<$Res>
+    implements $WatchOnlyDescriptorCopyWith<$Res> {
+  _$WatchOnlyDescriptorCopyWithImpl(this._self, this._then);
+
+  final WatchOnlyDescriptor _self;
+  final $Res Function(WatchOnlyDescriptor) _then;
+
+/// Create a copy of Satoshifier
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? descriptor = null,}) {
+  return _then(WatchOnlyDescriptor(
+descriptor: null == descriptor ? _self.descriptor : descriptor // ignore: cast_nullable_to_non_nullable
+as Descriptor,
+  ));
+}
+
+
+}
+
 // dart format on

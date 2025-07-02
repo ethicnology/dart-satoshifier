@@ -9,13 +9,16 @@ export 'enums/derivation.dart' show Derivation;
 export 'descriptor.dart' show Descriptor;
 export 'enums/script_operand.dart' show ScriptOperand;
 export 'extended_pubkey.dart' show ExtendedPubkey;
-export 'watch_only_extension.dart' show WatchOnlyExtension;
+export 'parsers/watch_only_xpub_parser.dart' show WatchOnlyXpubParser;
+export 'parsers/watch_only_descriptor_parser.dart'
+    show WatchOnlyDescriptorParser;
+export 'watch_only_descriptor_extension.dart' show WatchOnlyDescriptorExtension;
 export 'parsers/bitcoin_address_parser.dart' show BitcoinAddressParser;
 export 'parsers/bip21_parser.dart' show Bip21Parser;
 export 'parsers/bolt11_parser.dart' show Bolt11Parser;
 export 'parsers/liquid_address_parser.dart' show LiquidAddressParser;
 export 'parsers/psbt_parser.dart' show PsbtParser;
-export 'parsers/watch_only_parser.dart' show WatchOnlyParser;
+
 export 'utils/utils.dart' show Utils;
 export 'utils/bip32_utils.dart' show Bip32Utils;
 export '_test_value.dart' show TestValue;
@@ -24,6 +27,7 @@ export '_test_value.dart' show TestValue;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:satoshifier/descriptor.dart';
 import 'package:satoshifier/enums/network.dart';
+import 'package:satoshifier/extended_pubkey.dart';
 import 'package:satoshifier/registry.dart';
 
 part 'satoshifier.freezed.dart';
@@ -68,6 +72,14 @@ sealed class Satoshifier with _$Satoshifier {
   }) = Bip21;
 
   const factory Satoshifier.psbt({required String psbt}) = Psbt;
+
+  const factory Satoshifier.watchOnlyXpub({
+    required ExtendedPubkey extendedPubkey,
+  }) = WatchOnlyXpub;
+
+  const factory Satoshifier.watchOnlyDescriptor({
+    required Descriptor descriptor,
+  }) = WatchOnlyDescriptor;
 
   const Satoshifier._();
 
