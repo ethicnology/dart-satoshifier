@@ -42,9 +42,11 @@ void main() {
     test('decodes a testnet descriptor', () async {
       final testnetDescriptor =
           'wpkh([${TestValue.walletMasterFingerprint}/84h/1h/1984h]${TestValue.xpub}/0/*)';
-      final satoshifier = await WatchOnlyParser.parse(testnetDescriptor);
-      expect(satoshifier, isA<WatchOnly>());
-      final descriptor = (satoshifier as WatchOnly).descriptor;
+      final satoshifier = await WatchOnlyDescriptorParser.parse(
+        testnetDescriptor,
+      );
+      expect(satoshifier, isA<WatchOnlyDescriptor>());
+      final descriptor = (satoshifier as WatchOnlyDescriptor).descriptor;
       expect(descriptor.operand, ScriptOperand.wpkh);
       expect(descriptor.pubkey, TestValue.xpub);
       expect(descriptor.fingerprint, TestValue.walletMasterFingerprint);

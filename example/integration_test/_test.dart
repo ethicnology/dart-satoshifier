@@ -6,7 +6,7 @@ import 'bolt11_test.dart' as bolt11;
 import 'liquid_addresses_test.dart' as liquid;
 import 'psbt_test.dart' as psbt;
 import 'satoshifier_test.dart' as satoshifier;
-import 'watch_only_test.dart' as watch_only;
+import 'watch_only_descriptor_test.dart' as watch_only_descriptor;
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +18,6 @@ void main() {
     liquid.main();
     psbt.main();
     satoshifier.main();
-    watch_only.main();
+    watch_only_descriptor.main();
   });
 }
