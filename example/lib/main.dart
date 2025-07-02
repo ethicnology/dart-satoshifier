@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             SatoshifierScannerWidget(
               onScan: (result) {
-                print('${result.runtimeType} : ${result.toString()}');
+                debugPrint('${result.runtimeType} : ${result.toString()}');
               },
             ),
           ],
