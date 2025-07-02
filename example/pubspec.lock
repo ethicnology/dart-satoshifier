@@ -70,10 +70,10 @@ packages:
     dependency: transitive
     description:
       name: bip32_keys
-      sha256: e8dfb4e4ad829cbc53c745c2ec72f04aa6b83689f09bc1f8823ee416cb2e5292
+      sha256: d7080d6dda5457ea55d0a25cdbaa1f681576e88276e8c8e8e16817996fd11ae7
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.1"
+    version: "3.1.1"
   boltz:
     dependency: transitive
     description:
