@@ -80,6 +80,13 @@ void main() {
       test('creates descriptor from parsed xpub', () {
         final extendedPubkey = ExtendedPubkey.parse(TestValue.xpub);
         final descriptor = Descriptor.fromExtendedPubkey(extendedPubkey);
+
+        expect(descriptor.fingerprint, '');
+        expect(descriptor.origin, '');
+        expect(descriptor.combined, 'pkh(${TestValue.xpub}/<0;1>/*)');
+        expect(descriptor.internal, 'pkh(${TestValue.xpub}/1/*)');
+        expect(descriptor.external, 'pkh(${TestValue.xpub}/0/*)');
+        expect(descriptor.pubkey, extendedPubkey.xpub);
         expect(descriptor.pubkey, extendedPubkey.pubBase58);
         expect(descriptor.network, extendedPubkey.network);
         expect(descriptor.derivation, extendedPubkey.derivation);
@@ -88,7 +95,16 @@ void main() {
       test('creates descriptor from parsed ypub', () {
         final extendedPubkey = ExtendedPubkey.parse(TestValue.ypub);
         final descriptor = Descriptor.fromExtendedPubkey(extendedPubkey);
-        expect(descriptor.pubkey, extendedPubkey.pubBase58);
+
+        expect(descriptor.fingerprint, '');
+        expect(descriptor.origin, '');
+        expect(
+          descriptor.combined,
+          'sh(wpkh(${TestValue.ypubToXpub}/<0;1>/*))',
+        );
+        expect(descriptor.internal, 'sh(wpkh(${TestValue.ypubToXpub}/1/*))');
+        expect(descriptor.external, 'sh(wpkh(${TestValue.ypubToXpub}/0/*))');
+        expect(descriptor.pubkey, extendedPubkey.xpub);
         expect(descriptor.network, extendedPubkey.network);
         expect(descriptor.derivation, extendedPubkey.derivation);
       });
@@ -96,7 +112,13 @@ void main() {
       test('creates descriptor from parsed zpub', () {
         final extendedPubkey = ExtendedPubkey.parse(TestValue.zpub);
         final descriptor = Descriptor.fromExtendedPubkey(extendedPubkey);
-        expect(descriptor.pubkey, extendedPubkey.pubBase58);
+
+        expect(descriptor.fingerprint, '');
+        expect(descriptor.origin, '');
+        expect(descriptor.combined, 'wsh(${TestValue.zpubToXpub}/<0;1>/*)');
+        expect(descriptor.internal, 'wsh(${TestValue.zpubToXpub}/1/*)');
+        expect(descriptor.external, 'wsh(${TestValue.zpubToXpub}/0/*)');
+        expect(descriptor.pubkey, extendedPubkey.xpub);
         expect(descriptor.network, extendedPubkey.network);
         expect(descriptor.derivation, extendedPubkey.derivation);
       });

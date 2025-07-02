@@ -12,6 +12,7 @@ void main() {
     test('parses ypub and pubBase58 matches input', () {
       final parsed = ExtendedPubkey.parse(TestValue.ypub);
 
+      expect(parsed.xpub, TestValue.ypubToXpub);
       expect(parsed.pubBase58, TestValue.ypub);
       expect(parsed.fingerprint, TestValue.ypubFingerprint);
     });
