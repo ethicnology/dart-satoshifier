@@ -66,7 +66,7 @@ void main() {
     });
 
     test('decodes a liquid descriptor', () {
-      final liquidCoinType = '1667h';
+      final liquidCoinType = '${CoinType.liquid.value}h';
       final liquidDescriptor =
           'wpkh([${TestValue.walletMasterFingerprint}/84h/$liquidCoinType/0h]${TestValue.xpub}/0/*)';
       final descriptor = Descriptor.parse(liquidDescriptor);
