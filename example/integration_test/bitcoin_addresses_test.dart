@@ -17,7 +17,7 @@ void main() {
   group('Bitcoin Addresses', () {
     for (final address in [...mainnetAddresses, ...testnetAddresses]) {
       test('parses $address', () async {
-        final result = await BitcoinAddressParser.parse(address);
+        final result = await Satoshifier.parse(address);
         expect(result, isA<BitcoinAddress>());
         expect((result as BitcoinAddress).address, address);
         if (mainnetAddresses.contains(address)) {
