@@ -55,7 +55,7 @@ extension SatoshifierPatterns on Satoshifier {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( BitcoinAddress value)?  bitcoinAddress,TResult Function( LiquidAddress value)?  liquidAddress,TResult Function( LightningInvoice value)?  lightningInvoice,TResult Function( Bolt11 value)?  bolt11,TResult Function( WatchOnly value)?  watchOnly,TResult Function( Bip21 value)?  bip21,TResult Function( Psbt value)?  psbt,TResult Function( WatchOnlyXpub value)?  watchOnlyXpub,TResult Function( WatchOnlyDescriptor value)?  watchOnlyDescriptor,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( BitcoinAddress value)?  bitcoinAddress,TResult Function( LiquidAddress value)?  liquidAddress,TResult Function( LightningInvoice value)?  lightningInvoice,TResult Function( Bolt11 value)?  bolt11,TResult Function( WatchOnly value)?  watchOnly,TResult Function( Bip21 value)?  bip21,TResult Function( Psbt value)?  psbt,TResult Function( WatchOnlyXpub value)?  watchOnlyXpub,TResult Function( WatchOnlyDescriptor value)?  watchOnlyDescriptor,TResult Function( Lnurl value)?  lnurl,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case BitcoinAddress() when bitcoinAddress != null:
@@ -67,7 +67,8 @@ return watchOnly(_that);case Bip21() when bip21 != null:
 return bip21(_that);case Psbt() when psbt != null:
 return psbt(_that);case WatchOnlyXpub() when watchOnlyXpub != null:
 return watchOnlyXpub(_that);case WatchOnlyDescriptor() when watchOnlyDescriptor != null:
-return watchOnlyDescriptor(_that);case _:
+return watchOnlyDescriptor(_that);case Lnurl() when lnurl != null:
+return lnurl(_that);case _:
   return orElse();
 
 }
@@ -85,7 +86,7 @@ return watchOnlyDescriptor(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( BitcoinAddress value)  bitcoinAddress,required TResult Function( LiquidAddress value)  liquidAddress,required TResult Function( LightningInvoice value)  lightningInvoice,required TResult Function( Bolt11 value)  bolt11,required TResult Function( WatchOnly value)  watchOnly,required TResult Function( Bip21 value)  bip21,required TResult Function( Psbt value)  psbt,required TResult Function( WatchOnlyXpub value)  watchOnlyXpub,required TResult Function( WatchOnlyDescriptor value)  watchOnlyDescriptor,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( BitcoinAddress value)  bitcoinAddress,required TResult Function( LiquidAddress value)  liquidAddress,required TResult Function( LightningInvoice value)  lightningInvoice,required TResult Function( Bolt11 value)  bolt11,required TResult Function( WatchOnly value)  watchOnly,required TResult Function( Bip21 value)  bip21,required TResult Function( Psbt value)  psbt,required TResult Function( WatchOnlyXpub value)  watchOnlyXpub,required TResult Function( WatchOnlyDescriptor value)  watchOnlyDescriptor,required TResult Function( Lnurl value)  lnurl,}){
 final _that = this;
 switch (_that) {
 case BitcoinAddress():
@@ -97,7 +98,8 @@ return watchOnly(_that);case Bip21():
 return bip21(_that);case Psbt():
 return psbt(_that);case WatchOnlyXpub():
 return watchOnlyXpub(_that);case WatchOnlyDescriptor():
-return watchOnlyDescriptor(_that);}
+return watchOnlyDescriptor(_that);case Lnurl():
+return lnurl(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -111,7 +113,7 @@ return watchOnlyDescriptor(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( BitcoinAddress value)?  bitcoinAddress,TResult? Function( LiquidAddress value)?  liquidAddress,TResult? Function( LightningInvoice value)?  lightningInvoice,TResult? Function( Bolt11 value)?  bolt11,TResult? Function( WatchOnly value)?  watchOnly,TResult? Function( Bip21 value)?  bip21,TResult? Function( Psbt value)?  psbt,TResult? Function( WatchOnlyXpub value)?  watchOnlyXpub,TResult? Function( WatchOnlyDescriptor value)?  watchOnlyDescriptor,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( BitcoinAddress value)?  bitcoinAddress,TResult? Function( LiquidAddress value)?  liquidAddress,TResult? Function( LightningInvoice value)?  lightningInvoice,TResult? Function( Bolt11 value)?  bolt11,TResult? Function( WatchOnly value)?  watchOnly,TResult? Function( Bip21 value)?  bip21,TResult? Function( Psbt value)?  psbt,TResult? Function( WatchOnlyXpub value)?  watchOnlyXpub,TResult? Function( WatchOnlyDescriptor value)?  watchOnlyDescriptor,TResult? Function( Lnurl value)?  lnurl,}){
 final _that = this;
 switch (_that) {
 case BitcoinAddress() when bitcoinAddress != null:
@@ -123,7 +125,8 @@ return watchOnly(_that);case Bip21() when bip21 != null:
 return bip21(_that);case Psbt() when psbt != null:
 return psbt(_that);case WatchOnlyXpub() when watchOnlyXpub != null:
 return watchOnlyXpub(_that);case WatchOnlyDescriptor() when watchOnlyDescriptor != null:
-return watchOnlyDescriptor(_that);case _:
+return watchOnlyDescriptor(_that);case Lnurl() when lnurl != null:
+return lnurl(_that);case _:
   return null;
 
 }
@@ -140,7 +143,7 @@ return watchOnlyDescriptor(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String address,  Network network)?  bitcoinAddress,TResult Function( String address,  Network network)?  liquidAddress,TResult Function( String invoice)?  lightningInvoice,TResult Function( String invoice,  int sats,  String paymentHash,  String description,  int expiresAt,  bool isTestnet)?  bolt11,TResult Function( Descriptor descriptor)?  watchOnly,TResult Function( String scheme,  String uri,  String address,  Network network,  int sats,  String label,  String message,  String lightning,  String pj,  String pjos)?  bip21,TResult Function( String psbt)?  psbt,TResult Function( ExtendedPubkey extendedPubkey)?  watchOnlyXpub,TResult Function( Descriptor descriptor)?  watchOnlyDescriptor,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String address,  Network network)?  bitcoinAddress,TResult Function( String address,  Network network)?  liquidAddress,TResult Function( String invoice)?  lightningInvoice,TResult Function( String invoice,  int sats,  String paymentHash,  String description,  int expiresAt,  bool isTestnet)?  bolt11,TResult Function( Descriptor descriptor)?  watchOnly,TResult Function( String scheme,  String uri,  String address,  Network network,  int sats,  String label,  String message,  String lightning,  String pj,  String pjos)?  bip21,TResult Function( String psbt)?  psbt,TResult Function( ExtendedPubkey extendedPubkey)?  watchOnlyXpub,TResult Function( Descriptor descriptor)?  watchOnlyDescriptor,TResult Function( String address)?  lnurl,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case BitcoinAddress() when bitcoinAddress != null:
 return bitcoinAddress(_that.address,_that.network);case LiquidAddress() when liquidAddress != null:
@@ -151,7 +154,8 @@ return watchOnly(_that.descriptor);case Bip21() when bip21 != null:
 return bip21(_that.scheme,_that.uri,_that.address,_that.network,_that.sats,_that.label,_that.message,_that.lightning,_that.pj,_that.pjos);case Psbt() when psbt != null:
 return psbt(_that.psbt);case WatchOnlyXpub() when watchOnlyXpub != null:
 return watchOnlyXpub(_that.extendedPubkey);case WatchOnlyDescriptor() when watchOnlyDescriptor != null:
-return watchOnlyDescriptor(_that.descriptor);case _:
+return watchOnlyDescriptor(_that.descriptor);case Lnurl() when lnurl != null:
+return lnurl(_that.address);case _:
   return orElse();
 
 }
@@ -169,7 +173,7 @@ return watchOnlyDescriptor(_that.descriptor);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String address,  Network network)  bitcoinAddress,required TResult Function( String address,  Network network)  liquidAddress,required TResult Function( String invoice)  lightningInvoice,required TResult Function( String invoice,  int sats,  String paymentHash,  String description,  int expiresAt,  bool isTestnet)  bolt11,required TResult Function( Descriptor descriptor)  watchOnly,required TResult Function( String scheme,  String uri,  String address,  Network network,  int sats,  String label,  String message,  String lightning,  String pj,  String pjos)  bip21,required TResult Function( String psbt)  psbt,required TResult Function( ExtendedPubkey extendedPubkey)  watchOnlyXpub,required TResult Function( Descriptor descriptor)  watchOnlyDescriptor,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String address,  Network network)  bitcoinAddress,required TResult Function( String address,  Network network)  liquidAddress,required TResult Function( String invoice)  lightningInvoice,required TResult Function( String invoice,  int sats,  String paymentHash,  String description,  int expiresAt,  bool isTestnet)  bolt11,required TResult Function( Descriptor descriptor)  watchOnly,required TResult Function( String scheme,  String uri,  String address,  Network network,  int sats,  String label,  String message,  String lightning,  String pj,  String pjos)  bip21,required TResult Function( String psbt)  psbt,required TResult Function( ExtendedPubkey extendedPubkey)  watchOnlyXpub,required TResult Function( Descriptor descriptor)  watchOnlyDescriptor,required TResult Function( String address)  lnurl,}) {final _that = this;
 switch (_that) {
 case BitcoinAddress():
 return bitcoinAddress(_that.address,_that.network);case LiquidAddress():
@@ -180,7 +184,8 @@ return watchOnly(_that.descriptor);case Bip21():
 return bip21(_that.scheme,_that.uri,_that.address,_that.network,_that.sats,_that.label,_that.message,_that.lightning,_that.pj,_that.pjos);case Psbt():
 return psbt(_that.psbt);case WatchOnlyXpub():
 return watchOnlyXpub(_that.extendedPubkey);case WatchOnlyDescriptor():
-return watchOnlyDescriptor(_that.descriptor);}
+return watchOnlyDescriptor(_that.descriptor);case Lnurl():
+return lnurl(_that.address);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -194,7 +199,7 @@ return watchOnlyDescriptor(_that.descriptor);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String address,  Network network)?  bitcoinAddress,TResult? Function( String address,  Network network)?  liquidAddress,TResult? Function( String invoice)?  lightningInvoice,TResult? Function( String invoice,  int sats,  String paymentHash,  String description,  int expiresAt,  bool isTestnet)?  bolt11,TResult? Function( Descriptor descriptor)?  watchOnly,TResult? Function( String scheme,  String uri,  String address,  Network network,  int sats,  String label,  String message,  String lightning,  String pj,  String pjos)?  bip21,TResult? Function( String psbt)?  psbt,TResult? Function( ExtendedPubkey extendedPubkey)?  watchOnlyXpub,TResult? Function( Descriptor descriptor)?  watchOnlyDescriptor,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String address,  Network network)?  bitcoinAddress,TResult? Function( String address,  Network network)?  liquidAddress,TResult? Function( String invoice)?  lightningInvoice,TResult? Function( String invoice,  int sats,  String paymentHash,  String description,  int expiresAt,  bool isTestnet)?  bolt11,TResult? Function( Descriptor descriptor)?  watchOnly,TResult? Function( String scheme,  String uri,  String address,  Network network,  int sats,  String label,  String message,  String lightning,  String pj,  String pjos)?  bip21,TResult? Function( String psbt)?  psbt,TResult? Function( ExtendedPubkey extendedPubkey)?  watchOnlyXpub,TResult? Function( Descriptor descriptor)?  watchOnlyDescriptor,TResult? Function( String address)?  lnurl,}) {final _that = this;
 switch (_that) {
 case BitcoinAddress() when bitcoinAddress != null:
 return bitcoinAddress(_that.address,_that.network);case LiquidAddress() when liquidAddress != null:
@@ -205,7 +210,8 @@ return watchOnly(_that.descriptor);case Bip21() when bip21 != null:
 return bip21(_that.scheme,_that.uri,_that.address,_that.network,_that.sats,_that.label,_that.message,_that.lightning,_that.pj,_that.pjos);case Psbt() when psbt != null:
 return psbt(_that.psbt);case WatchOnlyXpub() when watchOnlyXpub != null:
 return watchOnlyXpub(_that.extendedPubkey);case WatchOnlyDescriptor() when watchOnlyDescriptor != null:
-return watchOnlyDescriptor(_that.descriptor);case _:
+return watchOnlyDescriptor(_that.descriptor);case Lnurl() when lnurl != null:
+return lnurl(_that.address);case _:
   return null;
 
 }
@@ -833,6 +839,72 @@ class _$WatchOnlyDescriptorCopyWithImpl<$Res>
   return _then(WatchOnlyDescriptor(
 descriptor: null == descriptor ? _self.descriptor : descriptor // ignore: cast_nullable_to_non_nullable
 as Descriptor,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class Lnurl extends Satoshifier {
+  const Lnurl({required this.address}): super._();
+  
+
+ final  String address;
+
+/// Create a copy of Satoshifier
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$LnurlCopyWith<Lnurl> get copyWith => _$LnurlCopyWithImpl<Lnurl>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Lnurl&&(identical(other.address, address) || other.address == address));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,address);
+
+@override
+String toString() {
+  return 'Satoshifier.lnurl(address: $address)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $LnurlCopyWith<$Res> implements $SatoshifierCopyWith<$Res> {
+  factory $LnurlCopyWith(Lnurl value, $Res Function(Lnurl) _then) = _$LnurlCopyWithImpl;
+@useResult
+$Res call({
+ String address
+});
+
+
+
+
+}
+/// @nodoc
+class _$LnurlCopyWithImpl<$Res>
+    implements $LnurlCopyWith<$Res> {
+  _$LnurlCopyWithImpl(this._self, this._then);
+
+  final Lnurl _self;
+  final $Res Function(Lnurl) _then;
+
+/// Create a copy of Satoshifier
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? address = null,}) {
+  return _then(Lnurl(
+address: null == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 

@@ -13,6 +13,7 @@ class Registry {
     (LiquidAddressParser, LiquidAddressParser.parse),
     (WatchOnlyXpubParser, WatchOnlyXpubParser.parse),
     (WatchOnlyDescriptorParser, WatchOnlyDescriptorParser.parse),
+    (LnurlParser, LnurlParser.parse),
   ];
 
   static Future<Satoshifier> parse(String data) async {

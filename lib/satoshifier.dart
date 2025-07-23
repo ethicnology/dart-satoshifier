@@ -18,6 +18,7 @@ export 'parsers/bip21_parser.dart' show Bip21Parser;
 export 'parsers/bolt11_parser.dart' show Bolt11Parser;
 export 'parsers/liquid_address_parser.dart' show LiquidAddressParser;
 export 'parsers/psbt_parser.dart' show PsbtParser;
+export 'parsers/lnurl_parser.dart' show LnurlParser;
 
 export 'utils/utils.dart' show Utils;
 export 'utils/bip32_utils.dart' show Bip32Utils;
@@ -81,6 +82,8 @@ sealed class Satoshifier with _$Satoshifier {
   const factory Satoshifier.watchOnlyDescriptor({
     required Descriptor descriptor,
   }) = WatchOnlyDescriptor;
+
+  const factory Satoshifier.lnurl({required String address}) = Lnurl;
 
   const Satoshifier._();
 
