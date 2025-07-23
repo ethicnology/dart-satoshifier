@@ -6,6 +6,11 @@ void main() {
     TestValue.mainnetP2PKH,
     TestValue.mainnetP2SH,
     TestValue.mainnetBech32,
+    // New test values
+    TestValue.bitcoinSegwitUppercase,
+    TestValue.bitcoinSegwitLowercase,
+    TestValue.bitcoinLegacy,
+    TestValue.bitcoinCompatible,
   ];
   final testnetAddresses = [
     TestValue.testnetP2PKH,
@@ -14,8 +19,8 @@ void main() {
   ];
 
   group('Bitcoin Addresses', () {
-    test('parses all valid addresses', () async {
-      for (final address in [...mainnetAddresses, ...testnetAddresses]) {
+    for (final address in [...mainnetAddresses, ...testnetAddresses]) {
+      test('parses $address', () async {
         final result = await BitcoinAddressParser.parse(address);
         expect(result, isA<BitcoinAddress>());
         expect((result as BitcoinAddress).address, address);
@@ -24,7 +29,7 @@ void main() {
         } else if (testnetAddresses.contains(address)) {
           expect((result).network, Network.bitcoinTestnet);
         }
-      }
-    });
+      });
+    }
   });
 }
