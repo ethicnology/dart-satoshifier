@@ -26,7 +26,6 @@ class Registry {
       try {
         return await parser(trimmed);
       } catch (e) {
-        // print('${type.toString()}: $e');
         continue;
       }
     }

@@ -4,7 +4,10 @@ import 'package:satoshifier/satoshifier.dart';
 class Bolt11Parser {
   static Future<Satoshifier> parse(String data) async {
     try {
-      final invoice = await boltz.DecodedInvoice.fromString(s: data);
+      final input =
+          Utils.isUppercaseAlphanumeric(data) ? data.toLowerCase() : data;
+
+      final invoice = await boltz.DecodedInvoice.fromString(s: input);
       final sats = invoice.msats.toInt() ~/ 1000;
 
       return Satoshifier.bolt11(
@@ -15,7 +18,8 @@ class Bolt11Parser {
         expiresAt: invoice.expiresAt.toInt(),
         isTestnet: invoice.network != 'bitcoin',
       );
-    } catch (_) {
+    } catch (e) {
+      print('Bolt11Parser: $data ${e.toString()}');
       rethrow;
     }
   }

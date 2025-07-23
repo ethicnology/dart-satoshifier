@@ -28,4 +28,8 @@ class Utils {
     }
     return string;
   }
+
+  static bool isUppercaseAlphanumeric(String string) {
+    return RegExp(r'^[A-Z0-9]+$').hasMatch(string);
+  }
 }

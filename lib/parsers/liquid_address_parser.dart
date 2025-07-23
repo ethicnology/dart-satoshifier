@@ -1,11 +1,10 @@
 import 'package:lwk/lwk.dart' as lwk;
-import 'package:satoshifier/enums/network.dart';
-import 'package:satoshifier/satoshifier.dart' show Satoshifier;
+import 'package:satoshifier/satoshifier.dart';
 
 class LiquidAddressParser {
   static Future<Satoshifier> parse(String data) async {
-    final isUppercase = RegExp(r'^[A-Z0-9]+$').hasMatch(data);
-    final input = isUppercase ? data.toLowerCase() : data;
+    final input =
+        Utils.isUppercaseAlphanumeric(data) ? data.toLowerCase() : data;
 
     for (var lwkNetwork in lwk.Network.values) {
       try {
