@@ -2,11 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:satoshifier/satoshifier.dart';
 
 void main() {
-  final validBolt11s = [
-    TestValue.bolt11,
-    TestValue.bolt11Uppercase,
-    TestValue.bolt11Lowercase,
-  ];
+  final validBolt11s = [TestValue.bolt11Uppercase, TestValue.bolt11Lowercase];
 
   group('Bolt11', () {
     for (final invoice in validBolt11s) {

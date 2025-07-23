@@ -6,11 +6,7 @@ void main() {
     TestValue.mainnetP2PKH,
     TestValue.mainnetP2SH,
     TestValue.mainnetBech32,
-    // New test values
-    TestValue.bitcoinSegwitUppercase,
-    TestValue.bitcoinSegwitLowercase,
-    TestValue.bitcoinLegacy,
-    TestValue.bitcoinCompatible,
+    TestValue.mainnetBech32Uppercase,
   ];
   final testnetAddresses = [
     TestValue.testnetP2PKH,

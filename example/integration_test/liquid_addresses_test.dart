@@ -4,10 +4,8 @@ import 'package:satoshifier/satoshifier.dart';
 void main() {
   final valids = [
     TestValue.liquidAddressMain,
-    // New test values
+    TestValue.liquidAddressUppercase,
     TestValue.liquidCompatible,
-    TestValue.liquidSegwitLowercase,
-    TestValue.liquidSegwitUppercase,
   ];
 
   group('Liquid Addresses', () {
