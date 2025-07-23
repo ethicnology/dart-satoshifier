@@ -2,10 +2,18 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:satoshifier/satoshifier.dart';
 
 void main() {
+  final validBolt11s = [
+    TestValue.bolt11,
+    TestValue.bolt11Uppercase,
+    TestValue.bolt11Lowercase,
+  ];
+
   group('Bolt11', () {
-    test('handles mainnet bolt11 invoices', () async {
-      final result = await Satoshifier.parse(TestValue.bolt11);
-      expect(result, isA<Bolt11>());
-    });
+    for (final invoice in validBolt11s) {
+      test('parses $invoice', () async {
+        final result = await Satoshifier.parse(invoice);
+        expect(result, isA<Bolt11>());
+      });
+    }
   });
 }
