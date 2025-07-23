@@ -49,25 +49,8 @@ void main() {
     TestValue.bip21LiquidSegwitLowercaseAmountLabel,
     TestValue.bip21LiquidCompatibleAmountLabel,
 
-    TestValue.payjoinBitcoinSegwitUppercaseBasic,
-    TestValue.payjoinBitcoinSegwitLowercaseBasic,
-    TestValue.payjoinBitcoinLegacyBasic,
-    TestValue.payjoinBitcoinCompatibleBasic,
-
-    TestValue.payjoinBitcoinSegwitUppercaseAmountOnly,
-    TestValue.payjoinBitcoinSegwitLowercaseAmountOnly,
-    TestValue.payjoinBitcoinLegacyAmountOnly,
-    TestValue.payjoinBitcoinCompatibleAmountOnly,
-
-    TestValue.payjoinBitcoinSegwitUppercaseLabelOnly,
-    TestValue.payjoinBitcoinSegwitLowercaseLabelOnly,
-    TestValue.payjoinBitcoinLegacyLabelOnly,
-    TestValue.payjoinBitcoinCompatibleLabelOnly,
-
-    TestValue.payjoinBitcoinSegwitUppercaseAmountLabel,
-    TestValue.payjoinBitcoinSegwitLowercaseAmountLabel,
-    TestValue.payjoinBitcoinLegacyAmountLabel,
-    TestValue.payjoinBitcoinCompatibleAmountLabel,
+    TestValue.payjoinWithPercentEncoding,
+    TestValue.payjoinWithoutPercentEncoding,
 
     TestValue.unifiedQrUppercase,
     TestValue.unifiedQrLowercase,

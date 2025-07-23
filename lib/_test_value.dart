@@ -171,35 +171,11 @@ class TestValue {
   static get bip21LiquidCompatibleBasic =>
       'liquidnetwork:$liquidCompatible?assetid=6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d';
 
-  // Payjoin Bitcoin URIs
-  static get payjoinBitcoinSegwitUppercaseAmountLabel =>
-      'BITCOIN:$mainnetBech32Uppercase?amount=0.0001&label=x';
-  static get payjoinBitcoinSegwitUppercaseAmountOnly =>
-      'BITCOIN:$mainnetBech32Uppercase?amount=0.0001';
-  static get payjoinBitcoinSegwitUppercaseLabelOnly =>
-      'BITCOIN:$mainnetBech32Uppercase?label=x';
-  static get payjoinBitcoinSegwitUppercaseBasic =>
-      'BITCOIN:$mainnetBech32Uppercase';
-  static get payjoinBitcoinSegwitLowercaseAmountLabel =>
-      'bitcoin:$mainnetBech32?amount=0.0001&label=x';
-  static get payjoinBitcoinSegwitLowercaseAmountOnly =>
-      'bitcoin:$mainnetBech32?amount=0.0001';
-  static get payjoinBitcoinSegwitLowercaseLabelOnly =>
-      'bitcoin:$mainnetBech32?label=x';
-  static get payjoinBitcoinSegwitLowercaseBasic => 'bitcoin:$mainnetBech32';
-  static get payjoinBitcoinLegacyAmountLabel =>
-      'bitcoin:$mainnetP2PKH?amount=0.0001&label=x';
-  static get payjoinBitcoinLegacyAmountOnly =>
-      'bitcoin:$mainnetP2PKH?amount=0.0001';
-  static get payjoinBitcoinLegacyLabelOnly => 'bitcoin:$mainnetP2PKH?label=x';
-  static get payjoinBitcoinLegacyBasic => 'bitcoin:$mainnetP2PKH';
-  static get payjoinBitcoinCompatibleAmountLabel =>
-      'bitcoin:$mainnetP2SH?amount=0.0001&label=x';
-  static get payjoinBitcoinCompatibleAmountOnly =>
-      'bitcoin:$mainnetP2SH?amount=0.0001';
-  static get payjoinBitcoinCompatibleLabelOnly =>
-      'bitcoin:$mainnetP2SH?label=x';
-  static get payjoinBitcoinCompatibleBasic => 'bitcoin:$mainnetP2SH';
+  // Bip21 with Payjoin URIs
+  static get payjoinWithPercentEncoding =>
+      'bitcoin:$mainnetBech32?pj=HTTPS%3A%2F%2FPAYJO.IN%2FM56PNQKGRMJVQ%23RK1QWQT6YLN4HN0LW3KCAG4Q37CQUMXMJQ789DN06LGCS2XT6KYPYRHK+OH1QYP87E2AVMDKXDTU6R25WCPQ5ZUF02XHNPA65JMD8ZA2W4YRQN6UUWG+EX1AKRCY6Q';
+  static get payjoinWithoutPercentEncoding =>
+      'bitcoin:$mainnetBech32?pj=HTTPS://PAYJO.IN/MC4NE37L202DZ%23RK1Q0ACQCLDGQ4PYUNMUXUH8DD2K8LAKEYD5JRYVQ5ZEKZTT6FA0T58X+OH1QYP87E2AVMDKXDTU6R25WCPQ5ZUF02XHNPA65JMD8ZA2W4YRQN6UUWG+EX1PZYGY6Q';
 
   // UnifiedQR
   static get unifiedQrUppercase =>

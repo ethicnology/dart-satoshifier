@@ -6,7 +6,7 @@ class Bip21Parser {
     final uri = bip21.decode(data);
 
     Network network;
-    switch (uri.scheme) {
+    switch (uri.scheme.toLowerCase()) {
       case 'bitcoin':
         final address = await BitcoinAddressParser.parse(uri.address);
         network = (address as BitcoinAddress).network;
@@ -22,7 +22,6 @@ class Bip21Parser {
       default:
         throw 'Unhandled scheme: ${uri.scheme} ${uri.address} not verified';
     }
-
     final amount = uri.amount;
     final sats = amount != null ? Utils.btcToSats(amount.toString()) : 0;
 
