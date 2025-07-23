@@ -104,7 +104,7 @@ class TestValue {
   static get bitcoinLegacy => '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa';
   static get bitcoinCompatible => '34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo';
   static get liquidSegwitUppercase =>
-      'LQ1QQTCDJZVADW7YHHZ6KGNG9UMLE7Z5A4DTCQYZRD0NNF8M4LH7M6WSHG8KALP4E23DRWG6XSW2CXNERWQY9SWYSC85CJVLUTMD80';
+      'LQ1QQTCDJZVADW7YHHZ6KGN9UMLE7Z5A4DTCQYZRD0NNF8M4LH7M6WSHG8KALP4E23DRWG6XSW2CXNERWQY9SWYSC85CJVLUTMD80';
   static get liquidSegwitLowercase =>
       'lq1qqtcdjzvadw7yhhz6kgn9umle7z5a4dtcqyzrd0nnf8m4lh7m6wshg8kalp4e23drwg6xsw2cxnerwqy9swysc85cjvlutmd80';
   static get liquidCompatible =>
