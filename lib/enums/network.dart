@@ -68,4 +68,21 @@ enum Network {
 
     throw 'Invalid xpub type: $xpubType';
   }
+
+  bool get isTestnet {
+    switch (this) {
+      case Network.bitcoinMainnet:
+        return false;
+      case Network.bitcoinSignet:
+        return false;
+      case Network.liquidMainnet:
+        return false;
+      case Network.bitcoinRegtest:
+        return false;
+      case Network.bitcoinTestnet:
+        return true;
+      case Network.liquidTestnet:
+        return true;
+    }
+  }
 }
