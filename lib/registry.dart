@@ -22,6 +22,7 @@ class Registry {
     await LibSatoshifier.init();
 
     final trimmed = data.trim();
+
     for (final (_, parser) in _parsers) {
       try {
         return await parser(trimmed);

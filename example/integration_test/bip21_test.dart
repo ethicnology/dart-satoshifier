@@ -59,7 +59,7 @@ void main() {
   group('Bip21', () {
     for (final uri in valids) {
       test('parses $uri', () async {
-        final result = await Satoshifier.parse(uri);
+        final result = await Bip21Parser.parse(uri);
         expect(result, isA<Bip21>());
       });
     }

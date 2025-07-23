@@ -3,6 +3,8 @@ import 'package:satoshifier/satoshifier.dart';
 
 class BitcoinAddressParser {
   static Future<Satoshifier> parse(String data) async {
+    await LibSatoshifier.init();
+
     for (var bdkNetwork in bdk.Network.values) {
       try {
         await bdk.Address.fromString(s: data, network: bdkNetwork);
