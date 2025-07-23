@@ -19,7 +19,6 @@ class Bolt11Parser {
         isTestnet: invoice.network != 'bitcoin',
       );
     } catch (e) {
-      print('Bolt11Parser: $data ${e.toString()}');
       rethrow;
     }
   }
