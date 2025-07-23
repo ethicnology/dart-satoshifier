@@ -63,6 +63,7 @@ sealed class Satoshifier with _$Satoshifier {
     required String scheme,
     required String uri,
     required String address,
+    required Network network,
     @Default(0) int sats,
     @Default('') String label,
     @Default('') String message,

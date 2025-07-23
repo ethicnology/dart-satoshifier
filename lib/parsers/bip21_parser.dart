@@ -5,15 +5,20 @@ class Bip21Parser {
   static Future<Satoshifier> parse(String data) async {
     final uri = bip21.decode(data);
 
+    Network network;
     switch (uri.scheme) {
       case 'bitcoin':
-        await BitcoinAddressParser.parse(uri.address);
+        final address = await BitcoinAddressParser.parse(uri.address);
+        network = (address as BitcoinAddress).network;
       case 'liquid':
-        await LiquidAddressParser.parse(uri.address);
+        final address = await LiquidAddressParser.parse(uri.address);
+        network = (address as LiquidAddress).network;
       case 'liquidnetwork':
-        await LiquidAddressParser.parse(uri.address);
+        final address = await LiquidAddressParser.parse(uri.address);
+        network = (address as LiquidAddress).network;
       case 'liquidtestnet':
-        await LiquidAddressParser.parse(uri.address);
+        final address = await LiquidAddressParser.parse(uri.address);
+        network = (address as LiquidAddress).network;
       default:
         throw 'Unhandled scheme: ${uri.scheme} ${uri.address} not verified';
     }
@@ -25,6 +30,7 @@ class Bip21Parser {
       scheme: uri.scheme,
       address: uri.address,
       uri: uri.toString(),
+      network: network,
       label: uri.label ?? '',
       message: uri.message ?? '',
       sats: sats,

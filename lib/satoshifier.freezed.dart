@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -41,6 +40,178 @@ class $SatoshifierCopyWith<$Res>  {
 $SatoshifierCopyWith(Satoshifier _, $Res Function(Satoshifier) __);
 }
 
+
+/// Adds pattern-matching-related methods to [Satoshifier].
+extension SatoshifierPatterns on Satoshifier {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( BitcoinAddress value)?  bitcoinAddress,TResult Function( LiquidAddress value)?  liquidAddress,TResult Function( LightningInvoice value)?  lightningInvoice,TResult Function( Bolt11 value)?  bolt11,TResult Function( WatchOnly value)?  watchOnly,TResult Function( Bip21 value)?  bip21,TResult Function( Psbt value)?  psbt,TResult Function( WatchOnlyXpub value)?  watchOnlyXpub,TResult Function( WatchOnlyDescriptor value)?  watchOnlyDescriptor,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case BitcoinAddress() when bitcoinAddress != null:
+return bitcoinAddress(_that);case LiquidAddress() when liquidAddress != null:
+return liquidAddress(_that);case LightningInvoice() when lightningInvoice != null:
+return lightningInvoice(_that);case Bolt11() when bolt11 != null:
+return bolt11(_that);case WatchOnly() when watchOnly != null:
+return watchOnly(_that);case Bip21() when bip21 != null:
+return bip21(_that);case Psbt() when psbt != null:
+return psbt(_that);case WatchOnlyXpub() when watchOnlyXpub != null:
+return watchOnlyXpub(_that);case WatchOnlyDescriptor() when watchOnlyDescriptor != null:
+return watchOnlyDescriptor(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( BitcoinAddress value)  bitcoinAddress,required TResult Function( LiquidAddress value)  liquidAddress,required TResult Function( LightningInvoice value)  lightningInvoice,required TResult Function( Bolt11 value)  bolt11,required TResult Function( WatchOnly value)  watchOnly,required TResult Function( Bip21 value)  bip21,required TResult Function( Psbt value)  psbt,required TResult Function( WatchOnlyXpub value)  watchOnlyXpub,required TResult Function( WatchOnlyDescriptor value)  watchOnlyDescriptor,}){
+final _that = this;
+switch (_that) {
+case BitcoinAddress():
+return bitcoinAddress(_that);case LiquidAddress():
+return liquidAddress(_that);case LightningInvoice():
+return lightningInvoice(_that);case Bolt11():
+return bolt11(_that);case WatchOnly():
+return watchOnly(_that);case Bip21():
+return bip21(_that);case Psbt():
+return psbt(_that);case WatchOnlyXpub():
+return watchOnlyXpub(_that);case WatchOnlyDescriptor():
+return watchOnlyDescriptor(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( BitcoinAddress value)?  bitcoinAddress,TResult? Function( LiquidAddress value)?  liquidAddress,TResult? Function( LightningInvoice value)?  lightningInvoice,TResult? Function( Bolt11 value)?  bolt11,TResult? Function( WatchOnly value)?  watchOnly,TResult? Function( Bip21 value)?  bip21,TResult? Function( Psbt value)?  psbt,TResult? Function( WatchOnlyXpub value)?  watchOnlyXpub,TResult? Function( WatchOnlyDescriptor value)?  watchOnlyDescriptor,}){
+final _that = this;
+switch (_that) {
+case BitcoinAddress() when bitcoinAddress != null:
+return bitcoinAddress(_that);case LiquidAddress() when liquidAddress != null:
+return liquidAddress(_that);case LightningInvoice() when lightningInvoice != null:
+return lightningInvoice(_that);case Bolt11() when bolt11 != null:
+return bolt11(_that);case WatchOnly() when watchOnly != null:
+return watchOnly(_that);case Bip21() when bip21 != null:
+return bip21(_that);case Psbt() when psbt != null:
+return psbt(_that);case WatchOnlyXpub() when watchOnlyXpub != null:
+return watchOnlyXpub(_that);case WatchOnlyDescriptor() when watchOnlyDescriptor != null:
+return watchOnlyDescriptor(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String address,  Network network)?  bitcoinAddress,TResult Function( String address,  Network network)?  liquidAddress,TResult Function( String invoice)?  lightningInvoice,TResult Function( String invoice,  int sats,  String paymentHash,  String description,  int expiresAt,  bool isTestnet)?  bolt11,TResult Function( Descriptor descriptor)?  watchOnly,TResult Function( String scheme,  String uri,  String address,  Network network,  int sats,  String label,  String message,  String lightning,  String pj,  String pjos)?  bip21,TResult Function( String psbt)?  psbt,TResult Function( ExtendedPubkey extendedPubkey)?  watchOnlyXpub,TResult Function( Descriptor descriptor)?  watchOnlyDescriptor,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case BitcoinAddress() when bitcoinAddress != null:
+return bitcoinAddress(_that.address,_that.network);case LiquidAddress() when liquidAddress != null:
+return liquidAddress(_that.address,_that.network);case LightningInvoice() when lightningInvoice != null:
+return lightningInvoice(_that.invoice);case Bolt11() when bolt11 != null:
+return bolt11(_that.invoice,_that.sats,_that.paymentHash,_that.description,_that.expiresAt,_that.isTestnet);case WatchOnly() when watchOnly != null:
+return watchOnly(_that.descriptor);case Bip21() when bip21 != null:
+return bip21(_that.scheme,_that.uri,_that.address,_that.network,_that.sats,_that.label,_that.message,_that.lightning,_that.pj,_that.pjos);case Psbt() when psbt != null:
+return psbt(_that.psbt);case WatchOnlyXpub() when watchOnlyXpub != null:
+return watchOnlyXpub(_that.extendedPubkey);case WatchOnlyDescriptor() when watchOnlyDescriptor != null:
+return watchOnlyDescriptor(_that.descriptor);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String address,  Network network)  bitcoinAddress,required TResult Function( String address,  Network network)  liquidAddress,required TResult Function( String invoice)  lightningInvoice,required TResult Function( String invoice,  int sats,  String paymentHash,  String description,  int expiresAt,  bool isTestnet)  bolt11,required TResult Function( Descriptor descriptor)  watchOnly,required TResult Function( String scheme,  String uri,  String address,  Network network,  int sats,  String label,  String message,  String lightning,  String pj,  String pjos)  bip21,required TResult Function( String psbt)  psbt,required TResult Function( ExtendedPubkey extendedPubkey)  watchOnlyXpub,required TResult Function( Descriptor descriptor)  watchOnlyDescriptor,}) {final _that = this;
+switch (_that) {
+case BitcoinAddress():
+return bitcoinAddress(_that.address,_that.network);case LiquidAddress():
+return liquidAddress(_that.address,_that.network);case LightningInvoice():
+return lightningInvoice(_that.invoice);case Bolt11():
+return bolt11(_that.invoice,_that.sats,_that.paymentHash,_that.description,_that.expiresAt,_that.isTestnet);case WatchOnly():
+return watchOnly(_that.descriptor);case Bip21():
+return bip21(_that.scheme,_that.uri,_that.address,_that.network,_that.sats,_that.label,_that.message,_that.lightning,_that.pj,_that.pjos);case Psbt():
+return psbt(_that.psbt);case WatchOnlyXpub():
+return watchOnlyXpub(_that.extendedPubkey);case WatchOnlyDescriptor():
+return watchOnlyDescriptor(_that.descriptor);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String address,  Network network)?  bitcoinAddress,TResult? Function( String address,  Network network)?  liquidAddress,TResult? Function( String invoice)?  lightningInvoice,TResult? Function( String invoice,  int sats,  String paymentHash,  String description,  int expiresAt,  bool isTestnet)?  bolt11,TResult? Function( Descriptor descriptor)?  watchOnly,TResult? Function( String scheme,  String uri,  String address,  Network network,  int sats,  String label,  String message,  String lightning,  String pj,  String pjos)?  bip21,TResult? Function( String psbt)?  psbt,TResult? Function( ExtendedPubkey extendedPubkey)?  watchOnlyXpub,TResult? Function( Descriptor descriptor)?  watchOnlyDescriptor,}) {final _that = this;
+switch (_that) {
+case BitcoinAddress() when bitcoinAddress != null:
+return bitcoinAddress(_that.address,_that.network);case LiquidAddress() when liquidAddress != null:
+return liquidAddress(_that.address,_that.network);case LightningInvoice() when lightningInvoice != null:
+return lightningInvoice(_that.invoice);case Bolt11() when bolt11 != null:
+return bolt11(_that.invoice,_that.sats,_that.paymentHash,_that.description,_that.expiresAt,_that.isTestnet);case WatchOnly() when watchOnly != null:
+return watchOnly(_that.descriptor);case Bip21() when bip21 != null:
+return bip21(_that.scheme,_that.uri,_that.address,_that.network,_that.sats,_that.label,_that.message,_that.lightning,_that.pj,_that.pjos);case Psbt() when psbt != null:
+return psbt(_that.psbt);case WatchOnlyXpub() when watchOnlyXpub != null:
+return watchOnlyXpub(_that.extendedPubkey);case WatchOnlyDescriptor() when watchOnlyDescriptor != null:
+return watchOnlyDescriptor(_that.descriptor);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 
@@ -390,12 +561,13 @@ as Descriptor,
 
 
 class Bip21 extends Satoshifier {
-  const Bip21({required this.scheme, required this.uri, required this.address, this.sats = 0, this.label = '', this.message = '', this.lightning = '', this.pj = '', this.pjos = ''}): super._();
+  const Bip21({required this.scheme, required this.uri, required this.address, required this.network, this.sats = 0, this.label = '', this.message = '', this.lightning = '', this.pj = '', this.pjos = ''}): super._();
   
 
  final  String scheme;
  final  String uri;
  final  String address;
+ final  Network network;
 @JsonKey() final  int sats;
 @JsonKey() final  String label;
 @JsonKey() final  String message;
@@ -413,16 +585,16 @@ $Bip21CopyWith<Bip21> get copyWith => _$Bip21CopyWithImpl<Bip21>(this, _$identit
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Bip21&&(identical(other.scheme, scheme) || other.scheme == scheme)&&(identical(other.uri, uri) || other.uri == uri)&&(identical(other.address, address) || other.address == address)&&(identical(other.sats, sats) || other.sats == sats)&&(identical(other.label, label) || other.label == label)&&(identical(other.message, message) || other.message == message)&&(identical(other.lightning, lightning) || other.lightning == lightning)&&(identical(other.pj, pj) || other.pj == pj)&&(identical(other.pjos, pjos) || other.pjos == pjos));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Bip21&&(identical(other.scheme, scheme) || other.scheme == scheme)&&(identical(other.uri, uri) || other.uri == uri)&&(identical(other.address, address) || other.address == address)&&(identical(other.network, network) || other.network == network)&&(identical(other.sats, sats) || other.sats == sats)&&(identical(other.label, label) || other.label == label)&&(identical(other.message, message) || other.message == message)&&(identical(other.lightning, lightning) || other.lightning == lightning)&&(identical(other.pj, pj) || other.pj == pj)&&(identical(other.pjos, pjos) || other.pjos == pjos));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,scheme,uri,address,sats,label,message,lightning,pj,pjos);
+int get hashCode => Object.hash(runtimeType,scheme,uri,address,network,sats,label,message,lightning,pj,pjos);
 
 @override
 String toString() {
-  return 'Satoshifier.bip21(scheme: $scheme, uri: $uri, address: $address, sats: $sats, label: $label, message: $message, lightning: $lightning, pj: $pj, pjos: $pjos)';
+  return 'Satoshifier.bip21(scheme: $scheme, uri: $uri, address: $address, network: $network, sats: $sats, label: $label, message: $message, lightning: $lightning, pj: $pj, pjos: $pjos)';
 }
 
 
@@ -433,7 +605,7 @@ abstract mixin class $Bip21CopyWith<$Res> implements $SatoshifierCopyWith<$Res> 
   factory $Bip21CopyWith(Bip21 value, $Res Function(Bip21) _then) = _$Bip21CopyWithImpl;
 @useResult
 $Res call({
- String scheme, String uri, String address, int sats, String label, String message, String lightning, String pj, String pjos
+ String scheme, String uri, String address, Network network, int sats, String label, String message, String lightning, String pj, String pjos
 });
 
 
@@ -450,12 +622,13 @@ class _$Bip21CopyWithImpl<$Res>
 
 /// Create a copy of Satoshifier
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? scheme = null,Object? uri = null,Object? address = null,Object? sats = null,Object? label = null,Object? message = null,Object? lightning = null,Object? pj = null,Object? pjos = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? scheme = null,Object? uri = null,Object? address = null,Object? network = null,Object? sats = null,Object? label = null,Object? message = null,Object? lightning = null,Object? pj = null,Object? pjos = null,}) {
   return _then(Bip21(
 scheme: null == scheme ? _self.scheme : scheme // ignore: cast_nullable_to_non_nullable
 as String,uri: null == uri ? _self.uri : uri // ignore: cast_nullable_to_non_nullable
 as String,address: null == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
-as String,sats: null == sats ? _self.sats : sats // ignore: cast_nullable_to_non_nullable
+as String,network: null == network ? _self.network : network // ignore: cast_nullable_to_non_nullable
+as Network,sats: null == sats ? _self.sats : sats // ignore: cast_nullable_to_non_nullable
 as int,label: null == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
 as String,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,lightning: null == lightning ? _self.lightning : lightning // ignore: cast_nullable_to_non_nullable
