@@ -4,15 +4,18 @@ import 'package:satoshifier/satoshifier.dart' show Satoshifier;
 
 class LiquidAddressParser {
   static Future<Satoshifier> parse(String data) async {
+    final isUppercase = RegExp(r'^[A-Z0-9]+$').hasMatch(data);
+    final input = isUppercase ? data.toLowerCase() : data;
+
     for (var lwkNetwork in lwk.Network.values) {
       try {
-        await lwk.Address.validate(addressString: data);
+        await lwk.Address.validate(addressString: input);
         final network = Network.fromLwkNetwork(lwkNetwork);
         return Satoshifier.liquidAddress(address: data, network: network);
       } catch (_) {}
     }
 
-    throw 'Invalid liquid address: $data';
+    throw 'Invalid liquid address: $input';
   }
 
   static Future<Satoshifier?> tryParse(String data) async {
