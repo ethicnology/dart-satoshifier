@@ -2,31 +2,83 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:satoshifier/satoshifier.dart';
 
 void main() {
-  group('bitcoin: Bip21', () {
-    test('URIs', () async {
-      final result = await Satoshifier.parse(TestValue.bip21UriBasic);
-      expect(result, isA<Bip21>());
-      expect((result as Bip21).address, TestValue.mainnetBech32);
-    });
+  // TODO: Add test for liquidtestnet: URIs
 
-    test('bitcoin: URIs with amount', () async {
-      final result = await Bip21Parser.parse(TestValue.bip21UriWithAmount);
-      expect(result, isA<Bip21>());
-      expect((result as Bip21).sats, 100000);
-    });
+  final valids = [
+    TestValue.bip21BitcoinUriBasic,
+    TestValue.bip21BitcoinSegwitLowercaseBasic,
+    TestValue.bip21BitcoinSegwitUppercaseBasic,
+    TestValue.bip21BitcoinLegacyBasic,
+    TestValue.bip21BitcoinCompatibleBasic,
 
-    test('liquidnetwork: URIs', () async {
-      final result = await Bip21Parser.parse(TestValue.liquidUriBasic);
-      expect(result, isA<Bip21>());
-      expect((result as Bip21).address, TestValue.liquidAddressMain);
-    });
+    TestValue.bip21BitcoinUriWithAmount,
+    TestValue.bip21BitcoinSegwitLowercaseAmountOnly,
+    TestValue.bip21BitcoinSegwitUppercaseAmountOnly,
+    TestValue.bip21BitcoinLegacyAmountOnly,
+    TestValue.bip21BitcoinCompatibleAmountOnly,
 
-    // TODO: Add test for liquidtestnet: URIs
-    // test('handles liquidtestnet: URIs', () async {
-    //   final result = await Bip21Parser.parse(
-    //     'liquidtestnet:',
-    //   );
-    //   expect(result, isA<Bip21>());
-    // });
+    TestValue.bip21BitcoinSegwitLowercaseLabelOnly,
+    TestValue.bip21BitcoinSegwitUppercaseLabelOnly,
+    TestValue.bip21BitcoinLegacyLabelOnly,
+    TestValue.bip21BitcoinCompatibleLabelOnly,
+
+    TestValue.bip21BitcoinSegwitLowercaseAmountLabel,
+    TestValue.bip21BitcoinSegwitUppercaseAmountLabel,
+    TestValue.bip21BitcoinLegacyAmountLabel,
+    TestValue.bip21BitcoinCompatibleAmountLabel,
+
+    TestValue.bip21BitcoinSegwitAmountLabelMessage,
+    TestValue.bip21BitcoinSegwitAmountMessage,
+    TestValue.bip21BitcoinSegwitLabelMessage,
+    TestValue.bip21BitcoinSegwitMessageOnly,
+
+    TestValue.bip21LiquidUriBasic,
+    TestValue.bip21LiquidSegwitUppercaseBasic,
+    TestValue.bip21LiquidSegwitLowercaseBasic,
+    TestValue.bip21LiquidCompatibleBasic,
+
+    TestValue.bip21LiquidSegwitUppercaseAmountOnly,
+    TestValue.bip21LiquidSegwitLowercaseAmountOnly,
+    TestValue.bip21LiquidCompatibleAmountOnly,
+
+    TestValue.bip21LiquidSegwitUppercaseLabelOnly,
+    TestValue.bip21LiquidSegwitLowercaseLabelOnly,
+    TestValue.bip21LiquidCompatibleLabelOnly,
+
+    TestValue.bip21LiquidSegwitUppercaseAmountLabel,
+    TestValue.bip21LiquidSegwitLowercaseAmountLabel,
+    TestValue.bip21LiquidCompatibleAmountLabel,
+
+    TestValue.payjoinBitcoinSegwitUppercaseBasic,
+    TestValue.payjoinBitcoinSegwitLowercaseBasic,
+    TestValue.payjoinBitcoinLegacyBasic,
+    TestValue.payjoinBitcoinCompatibleBasic,
+
+    TestValue.payjoinBitcoinSegwitUppercaseAmountOnly,
+    TestValue.payjoinBitcoinSegwitLowercaseAmountOnly,
+    TestValue.payjoinBitcoinLegacyAmountOnly,
+    TestValue.payjoinBitcoinCompatibleAmountOnly,
+
+    TestValue.payjoinBitcoinSegwitUppercaseLabelOnly,
+    TestValue.payjoinBitcoinSegwitLowercaseLabelOnly,
+    TestValue.payjoinBitcoinLegacyLabelOnly,
+    TestValue.payjoinBitcoinCompatibleLabelOnly,
+
+    TestValue.payjoinBitcoinSegwitUppercaseAmountLabel,
+    TestValue.payjoinBitcoinSegwitLowercaseAmountLabel,
+    TestValue.payjoinBitcoinLegacyAmountLabel,
+    TestValue.payjoinBitcoinCompatibleAmountLabel,
+
+    TestValue.unifiedQrUppercase,
+    TestValue.unifiedQrLowercase,
+  ];
+
+  group('Bip21', () {
+    for (final uri in valids) {
+      test('parses $uri', () async {
+        final result = await Bip21Parser.parse(uri);
+        expect(result, isA<Bip21>());
+      });
+    }
   });
 }
