@@ -95,4 +95,136 @@ class TestValue {
   // PSBT
   static get psbtBase64 =>
       r'cHNidP8BAHsCAAAAAhuVpgVRdOxkuC7wW2rvw4800OVxl+QCgezYKHtCYN7GAQAAAAD/////HPTH9wFgyf4iQ2xw4DIDP8t9IjCePWDjhqgs8fXvSIcAAAAAAP////8BigIAAAAAAAAWABTHctb5VULhHvEejvx8emmDCtOKBQAAAAAAAAAA';
+
+  // Standard Cases
+  static get bitcoinSegwitUppercase =>
+      'BC1QQPUEY8TZEUFG5DPJUF37XHNVEMKFAAHN6ZN2UQ';
+  static get bitcoinSegwitLowercase =>
+      'bc1qqpuey8tzeufg5dpjuf37xhnvemkfaahn6zn2uq';
+  static get bitcoinLegacy => '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa';
+  static get bitcoinCompatible => '34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo';
+  static get liquidSegwitUppercase =>
+      'LQ1QQTCDJZVADW7YHHZ6KGNG9UMLE7Z5A4DTCQYZRD0NNF8M4LH7M6WSHG8KALP4E23DRWG6XSW2CXNERWQY9SWYSC85CJVLUTMD80';
+  static get liquidSegwitLowercase =>
+      'lq1qqtcdjzvadw7yhhz6kgn9umle7z5a4dtcqyzrd0nnf8m4lh7m6wshg8kalp4e23drwg6xsw2cxnerwqy9swysc85cjvlutmd80';
+  static get liquidCompatible =>
+      'VJLJfVwTNyxCVtHNg1hdFCNf2urE3qUigKGxJifWdbGvv685GLYAB25v8zsT26v8XxWcne9opyZXihTo';
+  static get bolt11Uppercase =>
+      'LNBC2500U1PVJLUEZSP5ZYG3ZYG3ZYG3ZYG3ZYG3ZYG3ZYG3ZYG3ZYG3ZYG3ZYG3ZYG3ZYGSPP5QQQSYQCYQ5RQWZQFQQQSYQCYQ5RQWZQFQQQSYQCYQ5RQWZQFQQQSYQCYQ5RQWZQFQYPQDQ5XYSXXATSYPG3K7ENXV4JSXQZPU9QRSGQUK0RL77NJ30YXDY8J9VDX85FKPMDLA2087NE0XH8NHEDH8W27KYKEE0LP53UT353S06FV3QFEHEXT0EH0YMJPF39TUVEN09SAM30G4VGPFNA3RH';
+  static get bolt11Lowercase =>
+      'lnbc2500u1pvjluezsp5zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zygspp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdq5xysxxatsyp3k7enxv4jsxqzpu9qrsgquk0rl77nj30yxdy8j9vdx85fkpmdla2087ne0xh8nhedh8w27kyke0lp53ut353s06fv3qfegext0eh0ymjpf39tuven09sam30g4vgpfna3rh';
+  static get lnurlUppercase =>
+      'LNURL1DP68GURN8GHJ7ER9D4HJUMRWVF5HGUEWVDHK6TMHD96XSERJV9MJ7CTSDYHHVVF0D3H82UNV9AVYS6ZV899XS4J6WFYRV6Z9TQU4GUT9VF48SWY20AR';
+  static get lnurlLowercase =>
+      'lnurl1dp68gurn8ghj7er9d4hjumrwvf5hguewvdhk6tmhd96xserjv9mj7ctsdyhhvvf0d3h82unv9avys6zv899xs4j6wfyrv6z9tqu4gut9vf48swy20ar';
+  static get lnAddressUppercase => 'ISHI@WALLETOFSATOSHI.COM';
+  static get lnAddressLowercase => 'ishi@walletofsatoshi.com';
+
+  // BIP21 Bitcoin URIs
+  static get bip21BitcoinSegwitLowercaseAmountLabel =>
+      'bitcoin:bc1qqpuey8tzeufg5dpjuf37xhnvemkfaahn6zn2uq?amount=0.0001&label=x';
+  static get bip21BitcoinSegwitLowercaseAmountOnly =>
+      'bitcoin:bc1qqpuey8tzeufg5dpjuf37xhnvemkfaahn6zn2uq?amount=0.0001';
+  static get bip21BitcoinSegwitLowercaseLabelOnly =>
+      'bitcoin:bc1qqpuey8tzeufg5dpjuf37xhnvemkfaahn6zn2uq?label=x';
+  static get bip21BitcoinSegwitLowercaseBasic =>
+      'bitcoin:bc1qqpuey8tzeufg5dpjuf37xhnvemkfaahn6zn2uq';
+  static get bip21BitcoinSegwitUppercaseAmountLabel =>
+      'BITCOIN:BC1QQPUEY8TZEUFG5DPJUF37XHNVEMKFAAHN6ZN2UQ?amount=0.0001&label=x';
+  static get bip21BitcoinSegwitUppercaseAmountOnly =>
+      'BITCOIN:BC1QQPUEY8TZEUFG5DPJUF37XHNVEMKFAAHN6ZN2UQ?amount=0.0001';
+  static get bip21BitcoinSegwitUppercaseLabelOnly =>
+      'BITCOIN:BC1QQPUEY8TZEUFG5DPJUF37XHNVEMKFAAHN6ZN2UQ?label=x';
+  static get bip21BitcoinSegwitUppercaseBasic =>
+      'BITCOIN:BC1QQPUEY8TZEUFG5DPJUF37XHNVEMKFAAHN6ZN2UQ';
+  static get bip21BitcoinLegacyAmountLabel =>
+      'bitcoin:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa?amount=0.0001&label=x';
+  static get bip21BitcoinLegacyAmountOnly =>
+      'bitcoin:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa?amount=0.0001';
+  static get bip21BitcoinLegacyLabelOnly =>
+      'bitcoin:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa?label=x';
+  static get bip21BitcoinLegacyBasic =>
+      'bitcoin:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa';
+  static get bip21BitcoinCompatibleAmountLabel =>
+      'bitcoin:34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo?amount=0.0001&label=x';
+  static get bip21BitcoinCompatibleAmountOnly =>
+      'bitcoin:34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo?amount=0.0001';
+  static get bip21BitcoinCompatibleLabelOnly =>
+      'bitcoin:34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo?label=x';
+  static get bip21BitcoinCompatibleBasic =>
+      'bitcoin:34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo';
+  static get bip21BitcoinSegwitAmountLabelMessage =>
+      'bitcoin:BC1QYLH3U67J673H6Y6ALV70M0PL2YZ53TZHVXGG7U?amount=0.00001&label=sbddesign%3A%20For%20lunch%20Tuesday&message=For%20lunch%20Tuesday';
+  static get bip21BitcoinSegwitAmountMessage =>
+      'bitcoin:BC1QYLH3U67J673H6Y6ALV70M0PL2YZ53TZHVXGG7U?amount=0.00001&message=For%20lunch%20Tuesday';
+  static get bip21BitcoinSegwitLabelMessage =>
+      'bitcoin:BC1QYLH3U67J673H6Y6ALV70M0PL2YZ53TZHVXGG7U?label=sbddesign%3A%20For%20lunch%20Tuesday&message=For%20lunch%20Tuesday';
+  static get bip21BitcoinSegwitMessageOnly =>
+      'bitcoin:BC1QYLH3U67J673H6Y6ALV70M0PL2YZ53TZHVXGG7U?message=For%20lunch%20Tuesday';
+
+  // BIP21 Liquid URIs
+  static get bip21LiquidSegwitUppercaseAmountLabel =>
+      'liquidnetwork:LQ1QQTCDJZVADW7YHHZ6KGNG9UMLE7Z5A4DTCQYZRD0NNF8M4LH7M6WSHG8KALP4E23DRWG6XSW2CXNERWQY9SWYSC85CJVLUTMD80?amount=0.0001&assetid=6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d&label=x';
+  static get bip21LiquidSegwitUppercaseAmountOnly =>
+      'liquidnetwork:LQ1QQTCDJZVADW7YHHZ6KGNG9UMLE7Z5A4DTCQYZRD0NNF8M4LH7M6WSHG8KALP4E23DRWG6XSW2CXNERWQY9SWYSC85CJVLUTMD80?amount=0.0001&assetid=6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d';
+  static get bip21LiquidSegwitUppercaseLabelOnly =>
+      'liquidnetwork:LQ1QQTCDJZVADW7YHHZ6KGNG9UMLE7Z5A4DTCQYZRD0NNF8M4LH7M6WSHG8KALP4E23DRWG6XSW2CXNERWQY9SWYSC85CJVLUTMD80?assetid=6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d&label=x';
+  static get bip21LiquidSegwitUppercaseBasic =>
+      'liquidnetwork:LQ1QQTCDJZVADW7YHHZ6KGNG9UMLE7Z5A4DTCQYZRD0NNF8M4LH7M6WSHG8KALP4E23DRWG6XSW2CXNERWQY9SWYSC85CJVLUTMD80?assetid=6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d';
+  static get bip21LiquidSegwitLowercaseAmountLabel =>
+      'LIQUIDNETWORK:lq1qqtcdjzvadw7yhhz6kgn9umle7z5a4dtcqyzrd0nnf8m4lh7m6wshg8kalp4e23drwg6xsw2cxnerwqy9swysc85cjvlutmd80?amount=0.0001&assetid=6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d&label=x';
+  static get bip21LiquidSegwitLowercaseAmountOnly =>
+      'LIQUIDNETWORK:lq1qqtcdjzvadw7yhhz6kgn9umle7z5a4dtcqyzrd0nnf8m4lh7m6wshg8kalp4e23drwg6xsw2cxnerwqy9swysc85cjvlutmd80?amount=0.0001&assetid=6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d';
+  static get bip21LiquidSegwitLowercaseLabelOnly =>
+      'LIQUIDNETWORK:lq1qqtcdjzvadw7yhhz6kgn9umle7z5a4dtcqyzrd0nnf8m4lh7m6wshg8kalp4e23drwg6xsw2cxnerwqy9swysc85cjvlutmd80?assetid=6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d&label=x';
+  static get bip21LiquidSegwitLowercaseBasic =>
+      'LIQUIDNETWORK:lq1qqtcdjzvadw7yhhz6kgn9umle7z5a4dtcqyzrd0nnf8m4lh7m6wshg8kalp4e23drwg6xsw2cxnerwqy9swysc85cjvlutmd80?assetid=6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d';
+  static get bip21LiquidCompatibleAmountLabel =>
+      'liquidnetwork:VJLJfVwTNyxCVtHNg1hdFCNf2urE3qUigKGxJifWdbGvv685GLYAB25v8zsT26v8XxWcne9opyZXihTo?amount=0.0001&assetid=6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d&label=x';
+  static get bip21LiquidCompatibleAmountOnly =>
+      'liquidnetwork:VJLJfVwTNyxCVtHNg1hdFCNf2urE3qUigKGxJifWdbGvv685GLYAB25v8zsT26v8XxWcne9opyZXihTo?amount=0.0001&assetid=6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d';
+  static get bip21LiquidCompatibleLabelOnly =>
+      'liquidnetwork:VJLJfVwTNyxCVtHNg1hdFCNf2urE3qUigKGxJifWdbGvv685GLYAB25v8zsT26v8XxWcne9opyZXihTo?assetid=6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d&label=x';
+  static get bip21LiquidCompatibleBasic =>
+      'liquidnetwork:VJLJfVwTNyxCVtHNg1hdFCNf2urE3qUigKGxJifWdbGvv685GLYAB25v8zsT26v8XxWcne9opyZXihTo?assetid=6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d';
+
+  // Payjoin Bitcoin URIs
+  static get payjoinBitcoinSegwitUppercaseAmountLabel =>
+      'bitcoin:bc1qqpuey8tzeufg5dpjuf37xhnvemkfaahn6zn2uq?amount=0.0001&label=x';
+  static get payjoinBitcoinSegwitUppercaseAmountOnly =>
+      'bitcoin:bc1qqpuey8tzeufg5dpjuf37xhnvemkfaahn6zn2uq?amount=0.0001';
+  static get payjoinBitcoinSegwitUppercaseLabelOnly =>
+      'bitcoin:bc1qqpuey8tzeufg5dpjuf37xhnvemkfaahn6zn2uq?label=x';
+  static get payjoinBitcoinSegwitUppercaseBasic =>
+      'bitcoin:bc1qqpuey8tzeufg5dpjuf37xhnvemkfaahn6zn2uq';
+  static get payjoinBitcoinSegwitLowercaseAmountLabel =>
+      'BITCOIN:BC1QQPUEY8TZEUFG5DPJUF37XHNVEMKFAAHN6ZN2UQ?amount=0.0001&label=x';
+  static get payjoinBitcoinSegwitLowercaseAmountOnly =>
+      'BITCOIN:BC1QQPUEY8TZEUFG5DPJUF37XHNVEMKFAAHN6ZN2UQ?amount=0.0001';
+  static get payjoinBitcoinSegwitLowercaseLabelOnly =>
+      'BITCOIN:BC1QQPUEY8TZEUFG5DPJUF37XHNVEMKFAAHN6ZN2UQ?label=x';
+  static get payjoinBitcoinSegwitLowercaseBasic =>
+      'BITCOIN:BC1QQPUEY8TZEUFG5DPJUF37XHNVEMKFAAHN6ZN2UQ';
+  static get payjoinBitcoinLegacyAmountLabel =>
+      'bitcoin:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa?amount=0.0001&label=x';
+  static get payjoinBitcoinLegacyAmountOnly =>
+      'bitcoin:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa?amount=0.0001';
+  static get payjoinBitcoinLegacyLabelOnly =>
+      'bitcoin:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa?label=x';
+  static get payjoinBitcoinLegacyBasic =>
+      'bitcoin:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa';
+  static get payjoinBitcoinCompatibleAmountLabel =>
+      'bitcoin:34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo?amount=0.0001&label=x';
+  static get payjoinBitcoinCompatibleAmountOnly =>
+      'bitcoin:34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo?amount=0.0001';
+  static get payjoinBitcoinCompatibleLabelOnly =>
+      'bitcoin:34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo?label=x';
+  static get payjoinBitcoinCompatibleBasic =>
+      'bitcoin:34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo';
+
+  // UnifiedQR
+  static get unifiedQrUppercase =>
+      'bitcoin:BC1QQPUEY8TZEUFG5DPJUF37XHNVEMKFAAHN6ZN2UQ?amount=0.0001&label=x&lightning=LNBC2500U1PVJLUEZSP5ZYG3ZYG3ZYG3ZYG3ZYG3ZYG3ZYG3ZYG3ZYG3ZYG3ZYG3ZYG3ZYGSPP5QQQSYQCYQ5RQWZQFQQQSYQCYQ5RQWZQFQQQSYQCYQ5RQWZQFQQQSYQCYQ5RQWZQFQYPQDQ5XYSXXATSYPG3K7ENXV4JSXQZPU9QRSGQUK0RL77NJ30YXDY8J9VDX85FKPMDLA2087NE0XH8NHEDH8W27KYKEE0LP53UT353S06FV3QFEHEXT0EH0YMJPF39TUVEN09SAM30G4VGPFNA3RH';
+  static get unifiedQrLowercase =>
+      'bitcoin:bc1qqpuey8tzeufg5dpjuf37xhnvemkfaahn6zn2uq?amount=0.0001&label=x&lightning=lnbc2500u1pvjluezsp5zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zygspp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdq5xysxxatsyp3k7enxv4jsxqzpu9qrsgquk0rl77nj30yxdy8j9vdx85fkpmdla2087ne0xh8nhedh8w27kyke0lp53ut353s06fv3qfegext0eh0ymjpf39tuven09sam30g4vgpfna3rh';
 }
