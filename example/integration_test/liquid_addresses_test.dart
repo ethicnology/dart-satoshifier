@@ -2,6 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:satoshifier/satoshifier.dart';
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   final valids = [
     TestValue.liquidAddressMain,
     TestValue.liquidAddressUppercase,

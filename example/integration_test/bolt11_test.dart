@@ -2,6 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:satoshifier/satoshifier.dart';
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   final validBolt11s = [TestValue.bolt11Uppercase, TestValue.bolt11Lowercase];
 
   group('Bolt11', () {

@@ -2,6 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:satoshifier/satoshifier.dart';
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   group('Watch Only', () {
     test('change only descriptor', () async {
       final watchOnly = await Satoshifier.parse(TestValue.descriptorChangeOnly);

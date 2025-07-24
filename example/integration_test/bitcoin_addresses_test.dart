@@ -2,6 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:satoshifier/satoshifier.dart';
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   final mainnetAddresses = [
     TestValue.mainnetP2PKH,
     TestValue.mainnetP2SH,
