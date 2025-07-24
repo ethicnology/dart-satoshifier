@@ -62,10 +62,10 @@ packages:
     dependency: transitive
     description:
       name: bip21_uri
-      sha256: "98e3de9368f0b92d654230b316903ae7bffb596a751c2d9d7654739052b48250"
+      sha256: "18fd73646958ae126651164d2b622e56f818a35f0c017340d290aa909d5915f3"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0"
+    version: "2.1.1"
   bip32_keys:
     dependency: transitive
     description:
