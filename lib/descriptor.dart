@@ -80,5 +80,5 @@ class Descriptor {
   }
 
   CoinType get coinType =>
-      network.isBitcoin ? CoinType.bitcoin : CoinType.liquid;
+      network.isBitcoin ? network == Network.bitcoinMainnet ? CoinType.bitcoin : CoinType.testnet : CoinType.liquid;
 }

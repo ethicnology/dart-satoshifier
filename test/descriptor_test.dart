@@ -125,5 +125,53 @@ void main() {
         expect(descriptor.derivation, extendedPubkey.derivation);
       });
     });
+
+    group('coinType getter', () {
+      test('returns CoinType.bitcoin for bitcoinMainnet', () {
+        final descriptor = Descriptor(
+          operand: ScriptOperand.pkh,
+          fingerprint: TestValue.walletMasterFingerprint,
+          pubkey: TestValue.xpub,
+          network: Network.bitcoinMainnet,
+          derivation: Derivation.bip44,
+          account: 0,
+        );
+        expect(descriptor.coinType, CoinType.bitcoin);
+      });
+
+      test('returns CoinType.testnet for all bitcoin testnet variants', () {
+        final testnetNetworks = [
+          Network.bitcoinTestnet,
+          Network.bitcoinSignet,
+          Network.bitcoinRegtest,
+        ];
+        for (final network in testnetNetworks) {
+          final descriptor = Descriptor(
+            operand: ScriptOperand.pkh,
+            fingerprint: TestValue.walletMasterFingerprint,
+            pubkey: TestValue.xpub,
+            network: network,
+            derivation: Derivation.bip44,
+            account: 0,
+          );
+          expect(descriptor.coinType, CoinType.testnet);
+        }
+      });
+
+      test('returns CoinType.liquid for liquid networks', () {
+        final liquidNetworks = [Network.liquidMainnet, Network.liquidTestnet];
+        for (final network in liquidNetworks) {
+          final descriptor = Descriptor(
+            operand: ScriptOperand.pkh,
+            fingerprint: TestValue.walletMasterFingerprint,
+            pubkey: TestValue.xpub,
+            network: network,
+            derivation: Derivation.bip44,
+            account: 0,
+          );
+          expect(descriptor.coinType, CoinType.liquid);
+        }
+      });
+    });
   });
 }
