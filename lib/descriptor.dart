@@ -19,6 +19,11 @@ class Descriptor {
 
   static Descriptor parse(String string) {
     final descriptor = string.trim();
+    
+    if (descriptor.startsWith('[') && descriptor.contains(']') && descriptor.contains('pub')) {
+      return _parseFromComponents(descriptor);
+    }
+
     final match = RegExp(
       r'(\w+)\(\[([a-fA-F0-9]+)/([0-9]+h)/([0-9]+h)/([0-9]+h)\]/?([^/<]+)',
     ).firstMatch(descriptor.trim());
@@ -81,4 +86,52 @@ class Descriptor {
 
   CoinType get coinType =>
       network.isBitcoin ? network == Network.bitcoinMainnet ? CoinType.bitcoin : CoinType.testnet : CoinType.liquid;
+
+  static Descriptor constructDescriptor(String fingerprint, String path, String xpub) {
+    final convertedPath = path.startsWith('m/') ? path.substring(2) : path;
+
+    final pathParts = convertedPath.split('/');
+    if (pathParts.length < 3) throw 'Invalid descriptor format: insufficient path components';
+    
+    final purpose = pathParts[0];
+    final coinTypeString = pathParts[1];
+    final accountString = pathParts[2];
+    
+    final coinTypeInt = int.parse(Utils.trimLastQuoteOrH(coinTypeString));
+    final account = int.parse(Utils.trimLastQuoteOrH(accountString));
+
+    final derivation = Derivation.fromPurpose(purpose);
+    final coinType = CoinType.fromInt(coinTypeInt);
+    final network = coinType.toNetwork();
+    final operand = switch (derivation) {
+      Derivation.bip44 => ScriptOperand.pkh,
+      Derivation.bip49 => ScriptOperand.shwpkh,
+      Derivation.bip84 => ScriptOperand.wpkh,
+    };
+
+    return Descriptor(
+      operand: operand,
+      fingerprint: fingerprint,
+      pubkey: xpub,
+      network: network,
+      derivation: derivation,
+      account: account,
+    );
+  }
+
+  static Descriptor _parseFromComponents(String descriptor) {
+    final bracketEnd = descriptor.indexOf(']');
+    if (bracketEnd <= 0) throw 'Invalid descriptor format: missing closing bracket';
+
+    final bracketContent = descriptor.substring(1, bracketEnd);
+    final parts = bracketContent.split('/');
+    if (parts.length < 2) throw 'Invalid descriptor format: insufficient derivation path parts';
+
+    final fingerprint = parts[0];
+    final path = parts.sublist(1).join('/');
+    final xpub = descriptor.substring(bracketEnd + 1);
+
+    return constructDescriptor(fingerprint, path, xpub);
+  }
+
 }
