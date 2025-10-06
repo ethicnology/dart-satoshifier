@@ -174,35 +174,35 @@ void main() {
       });
     });
 
-    test('constructDescriptor: infers wpkh from 84h and mainnet from 0h', () {
-      final d = Descriptor.constructDescriptor(
-        TestValue.walletMasterFingerprint,
-        '84h/0h/0h',
-        TestValue.xpub,
+    test('fromStrings: 84h Mainnet Account 1', () {
+      final d = Descriptor.fromStrings(
+        fingerprint: TestValue.walletMasterFingerprint,
+        path: '84h/0h/1h',
+        xpub: TestValue.xpub,
       );
       expect(d.operand, ScriptOperand.wpkh);
       expect(d.derivation, Derivation.bip84);
       expect(d.network, Network.bitcoinMainnet);
-      expect(d.account, 0);
+      expect(d.account, 1);
     });
 
-    test('constructDescriptor: infers wpkh from 84h on testnet (1h)', () {
-      final d = Descriptor.constructDescriptor(
-        TestValue.walletMasterFingerprint,
-        '84h/1h/3h',
-        TestValue.xpub,
+    test('fromStrings: 84h Testnet Account 0', () {
+      final d = Descriptor.fromStrings(
+        fingerprint: TestValue.walletMasterFingerprint,
+        path: '84h/1h/0h',
+        xpub: TestValue.testnetTpub,
       );
       expect(d.operand, ScriptOperand.wpkh);
       expect(d.derivation, Derivation.bip84);
       expect(d.network, Network.bitcoinTestnet);
-      expect(d.account, 3);
+      expect(d.account, 0);
     });
 
-    test('constructDescriptor: infers pkh from 44h and mainnet from 0h', () {
-      final d = Descriptor.constructDescriptor(
-        TestValue.walletMasterFingerprint,
-        '44h/0h/5h',
-        TestValue.xpub,
+    test('fromStrings: 44h Mainnet Account 5', () {
+      final d = Descriptor.fromStrings(
+        fingerprint: TestValue.walletMasterFingerprint,
+        path: '44h/0h/5h',
+        xpub: TestValue.xpub,
       );
       expect(d.operand, ScriptOperand.pkh);
       expect(d.derivation, Derivation.bip44);
@@ -210,11 +210,23 @@ void main() {
       expect(d.account, 5);
     });
 
-    test('constructDescriptor: infers sh(wpkh) from 49h on mainnet', () {
-      final d = Descriptor.constructDescriptor(
-        TestValue.walletMasterFingerprint,
-        '49h/0h/1h',
-        TestValue.xpub,
+    test('fromStrings: 44h Testnet Account 10', () {
+      final d = Descriptor.fromStrings(
+        fingerprint: TestValue.walletMasterFingerprint,
+        path: '44h/1h/10h',
+        xpub: TestValue.testnetTpub,
+      );
+      expect(d.operand, ScriptOperand.pkh);
+      expect(d.derivation, Derivation.bip44);
+      expect(d.network, Network.bitcoinTestnet);
+      expect(d.account, 10);
+    });
+
+    test('fromStrings: 49h Mainnet Account 1', () {
+      final d = Descriptor.fromStrings(
+        fingerprint: TestValue.walletMasterFingerprint,
+        path: '49h/0h/1h',
+        xpub: TestValue.xpub,
       );
       expect(d.operand, ScriptOperand.shwpkh);
       expect(d.derivation, Derivation.bip49);
@@ -222,23 +234,11 @@ void main() {
       expect(d.account, 1);
     });
 
-    test('constructDescriptor: infers pkh from 44h on testnet', () {
-      final d = Descriptor.constructDescriptor(
-        TestValue.walletMasterFingerprint,
-        '44h/1h/0h',
-        TestValue.xpub,
-      );
-      expect(d.operand, ScriptOperand.pkh);
-      expect(d.derivation, Derivation.bip44);
-      expect(d.network, Network.bitcoinTestnet);
-      expect(d.account, 0);
-    });
-
-    test('constructDescriptor: supports optional m/ prefix', () {
-      final d = Descriptor.constructDescriptor(
-        TestValue.walletMasterFingerprint,
-        'm/49h/1h/7h',
-        TestValue.xpub,
+    test('fromStrings: 49h Testnet Account 7', () {
+      final d = Descriptor.fromStrings(
+        fingerprint: TestValue.walletMasterFingerprint,
+        path: '49h/1h/7h',
+        xpub: TestValue.testnetTpub,
       );
       expect(d.operand, ScriptOperand.shwpkh);
       expect(d.derivation, Derivation.bip49);
@@ -246,31 +246,40 @@ void main() {
       expect(d.account, 7);
     });
 
-    test('constructDescriptor: maps liquid coin type to liquid network', () {
-      final d = Descriptor.constructDescriptor(
-        TestValue.walletMasterFingerprint,
-        '84h/${CoinType.liquid.value}h/0h',
-        TestValue.xpub,
+    test('fromStrings: supports optional m/ prefix', () {
+      final d = Descriptor.fromStrings(
+        fingerprint: TestValue.walletMasterFingerprint,
+        path: 'm/49h/1h/7h',
+        xpub: TestValue.xpub,
+      );
+      expect(d.operand, ScriptOperand.shwpkh);
+      expect(d.derivation, Derivation.bip49);
+      expect(d.network, Network.bitcoinTestnet);
+      expect(d.account, 7);
+    });
+
+    test('fromStrings: maps liquid coin type to liquid network', () {
+      final d = Descriptor.fromStrings(
+        fingerprint: TestValue.walletMasterFingerprint,
+        path: '84h/${CoinType.liquid.value}h/0h',
+        xpub: TestValue.xpub,
       );
       expect(d.network, Network.liquidMainnet);
       expect(d.derivation, Derivation.bip84);
       expect(d.operand, ScriptOperand.wpkh);
     });
 
-    test(
-      'constructDescriptor: 44h with liquid coin type infers pkh on liquid',
-      () {
-        final d = Descriptor.constructDescriptor(
-          TestValue.walletMasterFingerprint,
-          '44h/${CoinType.liquid.value}h/9h',
-          TestValue.xpub,
-        );
-        expect(d.operand, ScriptOperand.pkh);
-        expect(d.derivation, Derivation.bip44);
-        expect(d.network, Network.liquidMainnet);
-        expect(d.account, 9);
-      },
-    );
+    test('fromStrings: 44h with liquid coin type infers pkh on liquid', () {
+      final d = Descriptor.fromStrings(
+        fingerprint: TestValue.walletMasterFingerprint,
+        path: '44h/${CoinType.liquid.value}h/9h',
+        xpub: TestValue.xpub,
+      );
+      expect(d.operand, ScriptOperand.pkh);
+      expect(d.derivation, Derivation.bip44);
+      expect(d.network, Network.liquidMainnet);
+      expect(d.account, 9);
+    });
 
     test('parse([origin]xpub): supports apostrophes and no m/', () {
       final d = Descriptor.parse(
@@ -352,7 +361,7 @@ void main() {
         () => Descriptor.parse(
           '[${TestValue.walletMasterFingerprint}/84h/xyz/0h]${TestValue.xpub}',
         ),
-        throwsA(isA<FormatException>()),
+        throwsA(isA<String>()),
       );
     });
   });

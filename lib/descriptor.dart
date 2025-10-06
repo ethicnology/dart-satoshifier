@@ -17,18 +17,51 @@ class Descriptor {
     required this.account,
   });
 
+  String get origin {
+    if (fingerprint.isEmpty) return '';
+    return '[$fingerprint/${derivation.purpose}/${coinType.value}h/${account}h]';
+  }
+
+  bool get _isShwpkh => operand == ScriptOperand.shwpkh;
+
+  String get combined {
+    return "${operand.value}($origin$pubkey/<0;1>/*)${_isShwpkh ? ')' : ''}";
+  }
+
+  String get internal {
+    return "${operand.value}($origin$pubkey/1/*)${_isShwpkh ? ')' : ''}";
+  }
+
+  String get external {
+    return "${operand.value}($origin$pubkey/0/*)${_isShwpkh ? ')' : ''}";
+  }
+
+  CoinType get coinType =>
+      network.isBitcoin
+          ? network == Network.bitcoinMainnet
+              ? CoinType.bitcoin
+              : CoinType.testnet
+          : CoinType.liquid;
+
   static Descriptor parse(String string) {
     final descriptor = string.trim();
-    
-    if (descriptor.startsWith('[') && descriptor.contains(']') && descriptor.contains('pub')) {
-      return _parseFromComponents(descriptor);
-    }
+    try {
+      return fromCombinedDescriptor(descriptor);
+    } catch (_) {}
 
+    try {
+      return parseExtendedPublicKeyWithKeyOrigin(descriptor);
+    } catch (_) {}
+
+    throw 'Invalid descriptor format: $descriptor';
+  }
+
+  static Descriptor fromCombinedDescriptor(String descriptor) {
     final match = RegExp(
       r'(\w+)\(\[([a-fA-F0-9]+)/([0-9]+h)/([0-9]+h)/([0-9]+h)\]/?([^/<]+)',
     ).firstMatch(descriptor.trim());
 
-    if (match == null) throw 'Invalid descriptor format: $descriptor';
+    if (match == null) throw 'Not a combined descriptor: $descriptor';
 
     final _ = match.group(1)!;
     final fingerprint = match.group(2)!;
@@ -65,38 +98,22 @@ class Descriptor {
     );
   }
 
-  String get origin {
-    if (fingerprint.isEmpty) return '';
-    return '[$fingerprint/${derivation.purpose}/${coinType.value}h/${account}h]';
-  }
-
-  bool get _isShwpkh => operand == ScriptOperand.shwpkh;
-
-  String get combined {
-    return "${operand.value}($origin$pubkey/<0;1>/*)${_isShwpkh ? ')' : ''}";
-  }
-
-  String get internal {
-    return "${operand.value}($origin$pubkey/1/*)${_isShwpkh ? ')' : ''}";
-  }
-
-  String get external {
-    return "${operand.value}($origin$pubkey/0/*)${_isShwpkh ? ')' : ''}";
-  }
-
-  CoinType get coinType =>
-      network.isBitcoin ? network == Network.bitcoinMainnet ? CoinType.bitcoin : CoinType.testnet : CoinType.liquid;
-
-  static Descriptor constructDescriptor(String fingerprint, String path, String xpub) {
+  static Descriptor fromStrings({
+    required String fingerprint,
+    required String path,
+    required String xpub,
+  }) {
     final convertedPath = path.startsWith('m/') ? path.substring(2) : path;
 
     final pathParts = convertedPath.split('/');
-    if (pathParts.length < 3) throw 'Invalid descriptor format: insufficient path components';
-    
+    if (pathParts.length < 3) {
+      throw 'Invalid descriptor format: insufficient path components';
+    }
+
     final purpose = pathParts[0];
     final coinTypeString = pathParts[1];
     final accountString = pathParts[2];
-    
+
     final coinTypeInt = int.parse(Utils.trimLastQuoteOrH(coinTypeString));
     final account = int.parse(Utils.trimLastQuoteOrH(accountString));
 
@@ -119,19 +136,28 @@ class Descriptor {
     );
   }
 
-  static Descriptor _parseFromComponents(String descriptor) {
+  static Descriptor parseExtendedPublicKeyWithKeyOrigin(String descriptor) {
+    if (!descriptor.startsWith('[') ||
+        !descriptor.contains(']') ||
+        !descriptor.contains('pub')) {
+      throw 'Invalid descriptor format: missing key origin';
+    }
+
     final bracketEnd = descriptor.indexOf(']');
-    if (bracketEnd <= 0) throw 'Invalid descriptor format: missing closing bracket';
+    if (bracketEnd <= 0) {
+      throw 'Invalid descriptor format: missing closing bracket';
+    }
 
     final bracketContent = descriptor.substring(1, bracketEnd);
     final parts = bracketContent.split('/');
-    if (parts.length < 2) throw 'Invalid descriptor format: insufficient derivation path parts';
+    if (parts.length < 2) {
+      throw 'Invalid descriptor format: insufficient derivation path parts';
+    }
 
     final fingerprint = parts[0];
     final path = parts.sublist(1).join('/');
     final xpub = descriptor.substring(bracketEnd + 1);
 
-    return constructDescriptor(fingerprint, path, xpub);
+    return fromStrings(fingerprint: fingerprint, path: path, xpub: xpub);
   }
-
 }
