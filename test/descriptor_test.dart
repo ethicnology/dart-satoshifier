@@ -173,5 +173,187 @@ void main() {
         }
       });
     });
+
+    test('constructDescriptor: infers wpkh from 84h and mainnet from 0h', () {
+      final d = Descriptor.constructDescriptor(
+        TestValue.walletMasterFingerprint,
+        '84h/0h/0h',
+        TestValue.xpub,
+      );
+      expect(d.operand, ScriptOperand.wpkh);
+      expect(d.derivation, Derivation.bip84);
+      expect(d.network, Network.bitcoinMainnet);
+      expect(d.account, 0);
+    });
+
+    test('constructDescriptor: infers wpkh from 84h on testnet (1h)', () {
+      final d = Descriptor.constructDescriptor(
+        TestValue.walletMasterFingerprint,
+        '84h/1h/3h',
+        TestValue.xpub,
+      );
+      expect(d.operand, ScriptOperand.wpkh);
+      expect(d.derivation, Derivation.bip84);
+      expect(d.network, Network.bitcoinTestnet);
+      expect(d.account, 3);
+    });
+
+    test('constructDescriptor: infers pkh from 44h and mainnet from 0h', () {
+      final d = Descriptor.constructDescriptor(
+        TestValue.walletMasterFingerprint,
+        '44h/0h/5h',
+        TestValue.xpub,
+      );
+      expect(d.operand, ScriptOperand.pkh);
+      expect(d.derivation, Derivation.bip44);
+      expect(d.network, Network.bitcoinMainnet);
+      expect(d.account, 5);
+    });
+
+    test('constructDescriptor: infers sh(wpkh) from 49h on mainnet', () {
+      final d = Descriptor.constructDescriptor(
+        TestValue.walletMasterFingerprint,
+        '49h/0h/1h',
+        TestValue.xpub,
+      );
+      expect(d.operand, ScriptOperand.shwpkh);
+      expect(d.derivation, Derivation.bip49);
+      expect(d.network, Network.bitcoinMainnet);
+      expect(d.account, 1);
+    });
+
+    test('constructDescriptor: infers pkh from 44h on testnet', () {
+      final d = Descriptor.constructDescriptor(
+        TestValue.walletMasterFingerprint,
+        '44h/1h/0h',
+        TestValue.xpub,
+      );
+      expect(d.operand, ScriptOperand.pkh);
+      expect(d.derivation, Derivation.bip44);
+      expect(d.network, Network.bitcoinTestnet);
+      expect(d.account, 0);
+    });
+
+    test('constructDescriptor: supports optional m/ prefix', () {
+      final d = Descriptor.constructDescriptor(
+        TestValue.walletMasterFingerprint,
+        'm/49h/1h/7h',
+        TestValue.xpub,
+      );
+      expect(d.operand, ScriptOperand.shwpkh);
+      expect(d.derivation, Derivation.bip49);
+      expect(d.network, Network.bitcoinTestnet);
+      expect(d.account, 7);
+    });
+
+    test('constructDescriptor: maps liquid coin type to liquid network', () {
+      final d = Descriptor.constructDescriptor(
+        TestValue.walletMasterFingerprint,
+        '84h/${CoinType.liquid.value}h/0h',
+        TestValue.xpub,
+      );
+      expect(d.network, Network.liquidMainnet);
+      expect(d.derivation, Derivation.bip84);
+      expect(d.operand, ScriptOperand.wpkh);
+    });
+
+    test(
+      'constructDescriptor: 44h with liquid coin type infers pkh on liquid',
+      () {
+        final d = Descriptor.constructDescriptor(
+          TestValue.walletMasterFingerprint,
+          '44h/${CoinType.liquid.value}h/9h',
+          TestValue.xpub,
+        );
+        expect(d.operand, ScriptOperand.pkh);
+        expect(d.derivation, Derivation.bip44);
+        expect(d.network, Network.liquidMainnet);
+        expect(d.account, 9);
+      },
+    );
+
+    test('parse([origin]xpub): supports apostrophes and no m/', () {
+      final d = Descriptor.parse(
+        "[${TestValue.walletMasterFingerprint}/84'/0h/0h]${TestValue.xpub}",
+      );
+      expect(d.operand, ScriptOperand.wpkh);
+      expect(d.derivation, Derivation.bip84);
+      expect(d.network, Network.bitcoinMainnet);
+      expect(d.account, 0);
+    });
+
+    test('parse([origin]xpub): 84h on testnet (1h) infers wpkh', () {
+      final d = Descriptor.parse(
+        '[${TestValue.walletMasterFingerprint}/84h/1h/4h]${TestValue.xpub}',
+      );
+      expect(d.operand, ScriptOperand.wpkh);
+      expect(d.derivation, Derivation.bip84);
+      expect(d.network, Network.bitcoinTestnet);
+      expect(d.account, 4);
+    });
+
+    test('parse([origin]xpub): 84h with liquid coin type infers liquid wpkh', () {
+      final d = Descriptor.parse(
+        '[${TestValue.walletMasterFingerprint}/84h/${CoinType.liquid.value}h/0h]${TestValue.xpub}',
+      );
+      expect(d.operand, ScriptOperand.wpkh);
+      expect(d.derivation, Derivation.bip84);
+      expect(d.network, Network.liquidMainnet);
+      expect(d.account, 0);
+    });
+    test('parse([origin]xpub): 49h infers sh(wpkh) on mainnet', () {
+      final d = Descriptor.parse(
+        '[${TestValue.walletMasterFingerprint}/49h/0h/0h]${TestValue.xpub}',
+      );
+      expect(d.operand, ScriptOperand.shwpkh);
+      expect(d.derivation, Derivation.bip49);
+      expect(d.network, Network.bitcoinMainnet);
+      expect(d.account, 0);
+    });
+
+    test('parse([origin]xpub): 44h on testnet (1h) infers pkh', () {
+      final d = Descriptor.parse(
+        '[${TestValue.walletMasterFingerprint}/44h/1h/2h]${TestValue.xpub}',
+      );
+      expect(d.operand, ScriptOperand.pkh);
+      expect(d.derivation, Derivation.bip44);
+      expect(d.network, Network.bitcoinTestnet);
+      expect(d.account, 2);
+    });
+
+    test('parse([origin]xpub): invalid missing closing bracket', () {
+      expect(
+        () => Descriptor.parse(
+          '[${TestValue.walletMasterFingerprint}/84h/0h/0h${TestValue.xpub}',
+        ),
+        throwsA(
+          predicate(
+            (e) => e is String && e.startsWith('Invalid descriptor format:'),
+          ),
+        ),
+      );
+    });
+
+    test('parse([origin]xpub): invalid insufficient derivation path parts', () {
+      expect(
+        () => Descriptor.parse(
+          '[${TestValue.walletMasterFingerprint}/84h/0h]${TestValue.xpub}',
+        ),
+        throwsA(
+          predicate(
+            (e) => e is String && e.startsWith('Invalid descriptor format:'),
+          ),
+        ),
+      );
+    });
+
+    test('parse([origin]xpub): invalid non-numeric coin type', () {
+      expect(
+        () => Descriptor.parse(
+          '[${TestValue.walletMasterFingerprint}/84h/xyz/0h]${TestValue.xpub}',
+        ),
+        throwsA(isA<FormatException>()),
+      );
+    });
   });
 }
